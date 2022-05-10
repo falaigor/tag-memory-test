@@ -1,45 +1,20 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { Button } from "./components/Button/Button";
+import { Input } from "./components/Input/Input";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
-}
+    <div className="w-screen flex items-center justify-center">
+      <div className="max-w-3xl w-full flex flex-col">
+        <div>
+          <h1 className="text-5xl font-extrabold">Tag memory test</h1>
+          <h2>How many HTML tags can you remember?</h2>
+        </div>
 
-export default App
+        <div className="flex flex-row w-full gap-2">
+          <Input />
+          <Button />
+        </div>
+      </div>
+    </div>
+  );
+}
