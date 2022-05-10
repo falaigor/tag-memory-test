@@ -7,3 +7,9 @@
 body {
   @apply bg-[#E5E5E5];
 }
+
+@layer components {
+  .font-montserrat {
+    font-family: "Montserrat", sans-serif;
+  }
+}
