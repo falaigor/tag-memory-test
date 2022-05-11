@@ -11,14 +11,20 @@ export function App() {
   const [guesstedTags, setGuesstedTags] = useState([]);
   const [value, setValue] = useState("");
 
-  function checkGuesstedTags(query) {
+  function checkGuesstedTags(value) {
     tags.filter((el) => {
-      if (el === query) {
-        setGuesstedTags([...guesstedTags, query]);
+      if (el === value) {
+        setGuesstedTags([...guesstedTags, value]);
         setValue("");
       }
     });
   }
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      checkGuesstedTags(value);
+    }
+  };
 
   return (
     <div className="w-screen flex items-center justify-center">
@@ -42,6 +48,7 @@ export function App() {
             placeholder="Here is example text"
             value={value}
             onChange={(event) => setValue(event.target.value)}
+            onKeyDown={handleKeyDown}
             className="p-4 w-full rounded-2xl border-2 border-zinc-900 drop-shadow-stroke"
           />
           <button
