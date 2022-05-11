@@ -10,19 +10,21 @@ import { CaretRight } from "phosphor-react";
 export function App() {
   const [guesstedTags, setGuesstedTags] = useState([]);
   const [value, setValue] = useState("");
-  const [start, setStart] = useState(false);
+  const [startCoutdown, setStartCountdown] = useState(false);
 
   function checkGuesstedTags(value) {
+    const valueLowerCase = value.toLowerCase();
+
     tags.filter((tag) => {
-      if (tag === value) {
-        setGuesstedTags([...guesstedTags, value]);
+      if (tag === valueLowerCase) {
+        setGuesstedTags([...guesstedTags, valueLowerCase]);
         setValue("");
       }
     });
   }
 
   function handleClick() {
-    setStart(true);
+    setStartCountdown(true);
     checkGuesstedTags(value);
   }
 
@@ -45,7 +47,7 @@ export function App() {
         <div className="flex p-4 my-4 rounded-2xl justify-between bg-zinc-100 border-2 border-zinc-900 drop-shadow-stroke items-center">
           <p className="text-3xl font-montserrat">Time Left</p>
 
-          <Countdown startCountdown={start} />
+          <Countdown startCountdown={startCoutdown} />
         </div>
 
         <div className="flex flex-row w-full gap-2">
