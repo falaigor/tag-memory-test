@@ -1,8 +1,25 @@
-import { Button } from "./components/Button";
-import { Countdown } from "./components/Contdown";
+import { useState } from "react";
+import { List } from "./components/List";
 import { Input } from "./components/Input";
+import { Button } from "./components/Button";
+import { Countdown } from "./components/Countdown";
+
+import { tags } from "./tags";
+import { CaretRight } from "phosphor-react";
 
 export function App() {
+  const [guesstedTags, setGuesstedTags] = useState([]);
+  const [value, setValue] = useState("");
+
+  function checkGuesstedTags(query) {
+    tags.filter((el) => {
+      if (el === query) {
+        setGuesstedTags([...guesstedTags, query]);
+        setValue("");
+      }
+    });
+  }
+
   return (
     <div className="w-screen flex items-center justify-center">
       <div className="max-w-3xl w-full flex flex-col">
@@ -20,20 +37,23 @@ export function App() {
         </div>
 
         <div className="flex flex-row w-full gap-2">
-          <Input />
-          <Button />
+          <input
+            type="text"
+            placeholder="Here is example text"
+            value={value}
+            onChange={(event) => setValue(event.target.value)}
+            className="p-4 w-full rounded-2xl border-2 border-zinc-900 drop-shadow-stroke"
+          />
+          <button
+            type="button"
+            onClick={() => checkGuesstedTags(value)}
+            className="max-w-[150px] w-full flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-800 text-zinc-100 hover:bg-blue-600 transition-all"
+          >
+            Guess <CaretRight weight="bold" />
+          </button>
         </div>
 
-        <div className="flex p-4 mt-4 rounded-t-2xl justify-between bg-zinc-100 border-2 border-zinc-900 items-center">
-          <p className="text-2xl font-montserrat">Time Left</p>
-        </div>
-        <div className="flex flex-col p-4 rounded-b-2xl justify-between bg-zinc-100 border-t-0 border-b-2 border-x-2 border-zinc-900">
-          <li className="list-decimal text-lg">Time Left</li>
-          <li className="list-decimal text-lg">Time Left</li>
-          <li className="list-decimal text-lg">Time Left</li>
-          <li className="list-decimal text-lg">Time Left</li>
-          <li className="list-decimal text-lg">Time Left</li>
-        </div>
+        <List guesstedTags={guesstedTags} />
       </div>
     </div>
   );

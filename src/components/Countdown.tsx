@@ -2,20 +2,18 @@ import { useState, useEffect } from "react";
 
 export const Countdown = () => {
   let countdownTimeOut;
+
   const [time, setTime] = useState(1 * 60);
+  const [start, setStart] = useState(false);
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
 
-  const [minuteLeft, minuteRight] = String(minutes)
-    .padStart(2, "0")
-    .split("");
-  const [secondLeft, secondRight] = String(seconds)
-    .padStart(2, "0")
-    .split("");
+  const [minuteLeft, minuteRight] = String(minutes).padStart(2, "0").split("");
+  const [secondLeft, secondRight] = String(seconds).padStart(2, "0").split("");
 
   useEffect(() => {
-    if (time > 0) {
+    if (start && time > 0) {
       countdownTimeOut = setTimeout(() => {
         setTime(time - 1);
       }, 1000);
