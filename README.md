@@ -77,7 +77,6 @@ A ideia do projeto era desenvolver um jogo onde o usuário pode tentar "descobri
  </div>
  <br />
  <sub><b>Igor Santos</b></sub>
- <br />
 
 [![Twitter Badge](https://img.shields.io/badge/-@falaigors-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/falaigors)](https://twitter.com/falaigors) [![Linkedin Badge](https://img.shields.io/badge/-Igor-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/falaigor/)
 [![Gmail Badge](https://img.shields.io/badge/-falaigors@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:falaigors@gmail.com)](mailto:falaigors@gmail.com)
