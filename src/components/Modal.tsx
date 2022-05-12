@@ -4,10 +4,24 @@ import { Fragment } from "react";
 
 interface ModalProps {
   isOpen: boolean;
+  totalTime: number;
+  totalGuessted: number;
+  restart: () => void;
   closeModal: () => void;
 }
 
-export function Modal({ isOpen, closeModal }: ModalProps) {
+export function Modal({
+  isOpen,
+  closeModal,
+  totalTime,
+  totalGuessted,
+  restart,
+}: ModalProps) {
+  function handleClickRestart() {
+    restart();
+    closeModal();
+  }
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
@@ -44,13 +58,15 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                   </Dialog.Title>
                   <div className="mt-4 mb-6">
                     <p className=" text-gray-500">
-                      Voce acertos{" "}
+                      You guessed
                       <span className="text-blue-800 font-bold">
-                        15 palavras
-                      </span>{" "}
-                      em{" "}
+                        {totalGuessted > 1
+                          ? ` ${totalGuessted} tags `
+                          : ` ${totalGuessted} tag `}
+                      </span>
+                      in{" "}
                       <span className="text-blue-800 font-bold">
-                        10 segundos
+                        {totalTime} seconds
                       </span>
                       !
                     </p>
@@ -59,8 +75,8 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                   <div className="mt-4">
                     <button
                       type="button"
-                      className=" w-full flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-800 text-zinc-100 hover:bg-blue-600 transition-all"
-                      onClick={closeModal}
+                      className="w-full flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-800 text-zinc-100 hover:bg-blue-600 transition-all"
+                      onClick={handleClickRestart}
                     >
                       Restart <CaretRight weight="bold" />
                     </button>

@@ -1,6 +1,4 @@
-import { Fragment, useState, useEffect, useRef } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-
+import { useState, useEffect, useRef } from "react";
 import { List } from "./components/List";
 import { Input } from "./components/Input";
 import { Button } from "./components/Button";
@@ -21,15 +19,6 @@ export function App() {
 
   const increaseCountdownTimer = () => (timer.current = timer.current + 5);
   const cleanInput = () => setValue("");
-
-  useEffect(() => {
-    if (startCountdown === true && countdown > 0) {
-      setTimeout(() => {
-        setCountdown((timer.current = timer.current - 1));
-        setTotalTime(totalTime + 1);
-      }, 1000);
-    } else if (countdown === 0) openModal();
-  }, [countdown, startCountdown]);
 
   function existsInTags(value) {
     return tags.includes(value.toLowerCase());
@@ -58,25 +47,50 @@ export function App() {
     }
   }
 
-  function closeModal() {
-    setIsModalOpen(false);
+  function countRecallTag() {
+    return tags.length - guesstedTags.length;
   }
 
-  function openModal() {
-    setIsModalOpen(true);
+  function guesstedAllTags() {
+    if (tags.length - guesstedTags.length === 0) setStartCountdown(false);
+  }
+
+  useEffect(() => {
+    if (startCountdown === true && countdown > 0) {
+      setTimeout(() => {
+        setCountdown((timer.current = timer.current - 1));
+        setTotalTime(totalTime + 1);
+      }, 1000);
+    } else if (tags.length === guesstedTags.length || countdown === 0) {
+      setStartCountdown(false);
+      setIsModalOpen(true);
+    }
+
+    guesstedAllTags();
+  }, [countdown, startCountdown]);
+
+  function restart() {
+    window.location.reload();
   }
 
   return (
     <>
+      <Modal
+        isOpen={isModalOpen}
+        closeModal={() => setIsModalOpen(false)}
+        restart={restart}
+        totalTime={totalTime}
+        totalGuessted={guesstedTags.length}
+      />
+
       <div className="w-screen flex items-center justify-center">
         <div className="max-w-3xl w-full flex flex-col">
           <div>
             <h1 className="pt-4 pb-2 text-5xl font-extrabold font-montserrat text-zinc-900">
               Tag memory test
             </h1>
-            <h2 className="pb-2 text-xl">
-              How many HTML tags can you remember?
-            </h2>
+            <h2 className="text-xl">How many HTML tags can you remember?</h2>
+            <h3 className="pb-2">{countRecallTag()} to recall…</h3>
           </div>
 
           <div className="flex p-4 my-4 rounded-2xl justify-between bg-zinc-100 border-2 border-zinc-900 drop-shadow-stroke items-center">
@@ -101,8 +115,6 @@ export function App() {
           <List guesstedTags={guesstedTags} />
         </div>
       </div>
-
-      <Modal isOpen={isModalOpen} closeModal={() => closeModal()} />
     </>
   );
 }
