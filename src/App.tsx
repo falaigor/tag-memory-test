@@ -8,7 +8,7 @@ import { Modal } from "./components/Modal";
 import { tags } from "./tags";
 
 export function App() {
-  let timer = useRef(1 * 10);
+  let timer = useRef(1 * 60);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [countdown, setCountdown] = useState(timer.current);
@@ -51,7 +51,7 @@ export function App() {
     return tags.length - guesstedTags.length;
   }
 
-  function guesstedAllTags() {
+  function stopCountdownGuesstedAllTags() {
     if (tags.length - guesstedTags.length === 0) setStartCountdown(false);
   }
 
@@ -66,7 +66,7 @@ export function App() {
       setIsModalOpen(true);
     }
 
-    guesstedAllTags();
+    stopCountdownGuesstedAllTags();
   }, [countdown, startCountdown]);
 
   function restart() {
@@ -87,7 +87,7 @@ export function App() {
         <div className="max-w-3xl w-full flex flex-col">
           <div>
             <h1 className="pt-4 pb-2 text-5xl font-extrabold font-montserrat text-zinc-900">
-              Tag memory test
+              HTML Tag memory test
             </h1>
             <h2 className="text-xl">How many HTML tags can you remember?</h2>
             <h3 className="pb-2">{countRecallTag()} to recall…</h3>
@@ -115,6 +115,19 @@ export function App() {
           <List guesstedTags={guesstedTags} />
         </div>
       </div>
+
+      <footer className="w-screen flex items-center justify-center absolute bottom-0">
+        <h2 className="text-sm p-2">
+          HTML Tags Memory Test by{" "}
+          <a
+            className="underline underline-offset-2"
+            target="_blank"
+            href="https://github.com/falaigor"
+          >
+            @falaigors
+          </a>
+        </h2>
+      </footer>
     </>
   );
 }

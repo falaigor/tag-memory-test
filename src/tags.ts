@@ -1,4 +1,4 @@
-const tagsOld = [
+export const tags = [
   "html",
   "base",
   "head",
@@ -115,5 +115,3 @@ const tagsOld = [
   "svg",
   "math",
 ];
-
-export const tags = ["html", "base"];
