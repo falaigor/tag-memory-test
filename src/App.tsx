@@ -116,9 +116,9 @@ export function App() {
         </div>
       </div>
 
-      <div className="relative p-4">
+      <div className="relative py-4">
         <footer className="w-screen flex items-center justify-center absolute bottom-0">
-          <h2 className="text-sm p-2">
+          <h2 className="text-sm py-2">
             HTML Tags Memory Test by{" "}
             <a
               className="underline underline-offset-2"
