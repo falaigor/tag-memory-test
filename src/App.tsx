@@ -116,18 +116,20 @@ export function App() {
         </div>
       </div>
 
-      <footer className="w-screen flex items-center justify-center absolute bottom-0">
-        <h2 className="text-sm p-2">
-          HTML Tags Memory Test by{" "}
-          <a
-            className="underline underline-offset-2"
-            target="_blank"
-            href="https://github.com/falaigor"
-          >
-            @falaigors
-          </a>
-        </h2>
-      </footer>
+      <div className="relative p-4">
+        <footer className="w-screen flex items-center justify-center absolute bottom-0">
+          <h2 className="text-sm p-2">
+            HTML Tags Memory Test by{" "}
+            <a
+              className="underline underline-offset-2"
+              target="_blank"
+              href="https://github.com/falaigor"
+            >
+              @falaigors
+            </a>
+          </h2>
+        </footer>
+      </div>
     </>
   );
 }
