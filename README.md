@@ -8,13 +8,9 @@
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
 </p>
 
-<br />
-
 # HTML Tag Memory Test
 
 ![https://tag-memory-test.vercel.app/](banner.png)
-
-<br />
 
 # 🚀 Tecnologias
 
@@ -24,13 +20,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [ReactJS](https://reactjs.org)
 - [TypeScript](https://www.typescriptlang.org/)
 
-<br />
-
 # 💻 Projeto
 
 A ideia do projeto era desenvolver um jogo onde o usuário pode tentar "descobrir" ou melhor dizendo, lembrar a maior quantidade de HTML Tags em um determinado tempo. 💜
-
-<br />
 
 # ⚙️ Funcionalidades
 
@@ -38,8 +30,6 @@ A ideia do projeto era desenvolver um jogo onde o usuário pode tentar "descobri
 - [x] A cada acerrto adiciona 5s ao countdown
 - [x] Modal com resultado total
 - [x] Contador de tags adinvinhadas e do tempo total
-
-<br />
 
 ## Ambiente de desenvolvimento
 
@@ -64,16 +54,12 @@ A ideia do projeto era desenvolver um jogo onde o usuário pode tentar "descobri
 - Na raiz do projeto, executar `npm install` para instalar as dependências
 - Quando concluído, `npm run build`
 
-<br />
-
 # 🚧 Features
 
 - [ ] Login com Github
 - [ ] Ranking dos usuários
 - [ ] Níveis de dificuldade
 - [ ] Cálculo de "Killing on Spree"
-
-<br />
 
 ## 💪 Como contribuir para o projeto
 
@@ -84,11 +70,11 @@ A ideia do projeto era desenvolver um jogo onde o usuário pode tentar "descobri
 
 ---
 
-<br />
-
 ## 🦸 Autor
 
+<div style="border-radius: 50%;">
  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/40046196?v=4" width="100px;" alt=""/>
+ </div>
  <br />
  <sub><b>Igor Santos</b></sub>
  <br />
