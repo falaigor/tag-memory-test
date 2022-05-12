@@ -73,21 +73,13 @@ export function App() {
         </div>
 
         <div className="flex flex-row w-full gap-2">
-          <input
-            type="text"
-            placeholder="Here is example text"
+          <Input
             value={value}
             onChange={(event) => setValue(event.target.value)}
             onKeyDown={handleKeyDown}
-            className="p-4 w-full rounded-2xl border-2 border-zinc-900 drop-shadow-stroke"
           />
-          <button
-            type="button"
-            onClick={() => handleClick()}
-            className="max-w-[150px] w-full flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-800 text-zinc-100 hover:bg-blue-600 transition-all"
-          >
-            Guess <CaretRight weight="bold" />
-          </button>
+
+          <Button onClick={() => handleClick()} />
         </div>
 
         <List guesstedTags={guesstedTags} />
