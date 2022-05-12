@@ -83,7 +83,7 @@ export function App() {
         totalGuessted={guesstedTags.length}
       />
 
-      <div className="w-screen flex items-center justify-center">
+      <div className="w-screen flex items-center justify-center mobile:p-4">
         <div className="max-w-3xl w-full flex flex-col">
           <div>
             <h1 className="pt-4 pb-2 text-5xl font-extrabold font-montserrat text-zinc-900">
