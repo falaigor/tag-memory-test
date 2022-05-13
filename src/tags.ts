@@ -114,4 +114,7 @@ export const tags = [
   "template",
   "svg",
   "math",
+  "frameset",
+  "center",
+  "marquee",
 ];
