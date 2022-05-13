@@ -41,8 +41,8 @@ export function App() {
     addedGuesstedTags(value);
   }
 
-  function handleKeyDown(event) {
-    if (event.key === "Enter") {
+  function handleKeyPress(event) {
+    if (event.keyCode === 13) {
       handleClick();
     }
   }
@@ -106,7 +106,7 @@ export function App() {
             <Input
               value={value}
               onChange={(event) => setValue(event.target.value)}
-              onKeyDown={handleKeyDown}
+              onKeyPress={handleKeyPress}
             />
 
             <Button onClick={() => handleClick()} />
