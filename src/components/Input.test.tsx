@@ -45,7 +45,7 @@ describe("Input", () => {
 
     const input = screen.getByTestId("input");
 
-    await fireEvent.keyPress(input, { key: "Enter", code: 13, charCode: 13 });
+    await fireEvent.keyPress(input, { charCode: 13 });
 
     expect(props.onKeyPress).toHaveBeenCalledTimes(1);
   });
