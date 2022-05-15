@@ -56,7 +56,7 @@ export function Modal({
                   >
                     Congratulations
                   </Dialog.Title>
-                  <div className="mt-4 mb-6">
+                  <div data-testid="result" className="mt-4 mb-6">
                     <p className=" text-gray-500">
                       You guessed
                       <span className="text-blue-800 font-bold">
