@@ -3,7 +3,7 @@ import { Modal } from "./Modal";
 
 describe("Modal", () => {
   beforeEach(() => {
-    const mock = function() {
+    const mock = function () {
       return {
         observe: jest.fn(),
         disconnect: jest.fn(),

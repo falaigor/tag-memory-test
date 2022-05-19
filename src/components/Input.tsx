@@ -11,7 +11,7 @@ export const Input = ({ value, onChange, onKeyPress }: InputProps) => {
       type="text"
       value={value}
       onChange={onChange}
-      onKeyPress={onKeyPress}
+      onKeyDown={onKeyPress}
       placeholder="Tag..."
       className="p-4 w-full rounded-2xl border-2 border-zinc-900 drop-shadow-stroke"
     />
