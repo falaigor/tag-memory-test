@@ -1,13 +1,13 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { App } from "../App";
+import { Home } from "../Home";
 
 const handleClick = jest.fn();
 
-describe("App", () => {
-  it("should render App page", () => {
-    render(<App />);
+describe("Home", () => {
+  it("should render Home page", () => {
+    render(<Home />);
 
     expect(screen.getByTestId("home-page")).toBeInTheDocument();
   });
@@ -15,7 +15,7 @@ describe("App", () => {
   it("should add an item to the list if there is an array of tags and there is no array of guessed tags", async () => {
     const tag = "html";
 
-    render(<App />);
+    render(<Home />);
 
     const button = screen.getByTestId("button");
     const input = screen.getByTestId("input");
@@ -31,7 +31,7 @@ describe("App", () => {
   it("should not add tag if it does not exist in the tag array", async () => {
     const tag = "html2";
 
-    render(<App />);
+    render(<Home />);
 
     const button = screen.getByTestId("button");
     const input = screen.getByTestId("input");
@@ -45,7 +45,7 @@ describe("App", () => {
   it("should add several items to the list if there is an array of tags and there is not an array of guessed tags", async () => {
     const tags = ["html", "base", "main"];
 
-    render(<App />);
+    render(<Home />);
 
     const button = screen.getByTestId("button");
     const input = screen.getByTestId("input");
@@ -64,7 +64,7 @@ describe("App", () => {
     const tags = ["html", "base"];
     const tag1 = "html";
 
-    render(<App />);
+    render(<Home />);
 
     const button = screen.getByTestId("button");
     const input = screen.getByTestId("input");
