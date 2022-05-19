@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { List } from "../components/List";
-import { Input } from "../components/Input";
-import { Button } from "../components/Button";
-import { Countdown } from "../components/Countdown";
-import { Modal } from "../components/Modal";
+import { List } from "../components/Home/List";
+import { Input } from "../components/Home/Input";
+import { Button } from "../components/Home/Button";
+import { Countdown } from "../components/Home/Countdown";
+import { Modal } from "../components/Home/Modal";
 
 import { tags } from "../utils/tags";
 

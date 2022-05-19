@@ -3,6 +3,7 @@ module.exports = {
   coveragePathIgnorePatterns: [
     "<rootDir>/src/tags.ts",
     "<rootDir>/src/main.tsx",
+    "<rootDir>/src/App.tsx",
   ],
   setupFilesAfterEnv: ["<rootDir>/src/tests/setupTests.ts"],
   testEnvironment: "jsdom",

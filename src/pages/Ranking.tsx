@@ -1,4 +1,4 @@
-import avatarUrl from "../images/avatar.png";
+import { RankingList } from "../components/Ranking/List";
 
 export const Ranking = () => {
   return (
@@ -14,7 +14,9 @@ export const Ranking = () => {
         </div>
 
         <div className="flex p-4 my-4 rounded-2xl justify-between bg-zinc-100 border-2 border-zinc-900 drop-shadow-stroke items-center">
-          <p className="text-3xl font-montserrat">Your position</p>
+          <p className="text-3xl font-montserrat">
+            Your position in the ranking
+          </p>
 
           <div
             data-testid="positon-number"
@@ -24,88 +26,7 @@ export const Ranking = () => {
           </div>
         </div>
 
-        <div data-testid="list-ranking">
-          <div className="flex p-4 mt-4 rounded-t-2xl justify-between bg-zinc-100 border-2 border-zinc-900 items-center">
-            <p className="text-2xl font-montserrat">Top 5</p>
-          </div>
-
-          <div className="flex flex-col justify-between border-t-0 border-b-2 border-x-2 border-zinc-900 odd:bg-white even:bg-slate-100">
-            <li
-              data-testid="ranking-item"
-              className="flex items-center justify-between p-4 odd:bg-white even:bg-slate-100"
-            >
-              <div className="flex items-center">
-                <div className="max-w-[50px] w-full h-[50px] flex border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900">
-                  1
-                </div>
-                <div className="flex items-center">
-                  <img className="w-[100px] mx-4" src={avatarUrl} />
-                  <p className="text-2xl font-montserrat">Igor Santos</p>
-                </div>
-              </div>
-
-              <div className="flex">
-                <p className="text-xl text-right mx-4 font-montserrat">
-                  79 tags guesseds
-                </p>
-
-                <div className="max-w-[150px] w-full h-[50px] flex border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900">
-                  432 seconds
-                </div>
-              </div>
-            </li>
-
-            <li
-              data-testid="ranking-item"
-              className="flex items-center justify-between p-4 odd:bg-white even:bg-slate-100"
-            >
-              <div className="flex items-center">
-                <div className="max-w-[50px] w-full h-[50px] flex border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900">
-                  1
-                </div>
-                <div className="flex items-center">
-                  <img className="w-[100px] mx-4" src={avatarUrl} />
-                  <p className="text-2xl font-montserrat">Igor Santos</p>
-                </div>
-              </div>
-
-              <div className="flex">
-                <p className="text-xl text-right mx-4 font-montserrat">
-                  79 tags guesseds
-                </p>
-
-                <div className="max-w-[150px] w-full h-[50px] flex border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900">
-                  432 seconds
-                </div>
-              </div>
-            </li>
-
-            <li
-              data-testid="ranking-item"
-              className="flex items-center justify-between p-4 odd:bg-white even:bg-slate-100"
-            >
-              <div className="flex items-center">
-                <div className="max-w-[50px] w-full h-[50px] flex border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900">
-                  1
-                </div>
-                <div className="flex items-center">
-                  <img className="w-[100px] mx-4" src={avatarUrl} />
-                  <p className="text-2xl font-montserrat">Igor Santos</p>
-                </div>
-              </div>
-
-              <div className="flex">
-                <p className="text-xl text-right mx-4 font-montserrat">
-                  79 tags guesseds
-                </p>
-
-                <div className="max-w-[150px] w-full h-[50px] flex border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900">
-                  432 seconds
-                </div>
-              </div>
-            </li>
-          </div>
-        </div>
+        <RankingList />
       </div>
     </div>
   );
