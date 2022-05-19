@@ -3,12 +3,9 @@ import userEvent from "@testing-library/user-event";
 
 import { App } from "../App";
 
-describe("App", () => {
-  const props = {
-    handleKeyPress: jest.fn(),
-    handleClick: jest.fn(),
-  };
+const handleClick = jest.fn();
 
+describe("App", () => {
   it("should render App page", () => {
     render(<App />);
 
@@ -42,7 +39,7 @@ describe("App", () => {
     await userEvent.type(input, tag);
     await fireEvent.click(button);
 
-    expect(props.handleClick).toBeCalledTimes(0);
+    expect(handleClick).toBeCalledTimes(0);
   });
 
   it("should add several items to the list if there is an array of tags and there is not an array of guessed tags", async () => {
@@ -87,19 +84,5 @@ describe("App", () => {
     await waitFor(() => {
       expect(screen.getAllByTestId("tag-item")).toHaveLength(2);
     });
-  });
-
-  it("should add tag when pressing enter", async () => {
-    const tag = "html";
-
-    render(<App />);
-
-    const button = screen.getByTestId("button");
-    const input = screen.getByTestId("input");
-
-    await userEvent.type(input, tag);
-    await fireEvent.click(button);
-
-    // expect(props.handleClick).toHaveBeenCalledTimes(1);
   });
 });
