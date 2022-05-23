@@ -16,10 +16,20 @@ describe("Login", () => {
     expect(screen.getByTestId("login-page")).toBeInTheDocument();
   });
 
-  it("should redirecionar a pagina o clicar", () => {
+  it("should call the function that performs the login on github", () => {
     renderLogin();
 
-    const button = screen.getByRole("button");
+    const button = screen.getByTestId("button-github");
+
+    fireEvent.click(button);
+
+    expect(window.location.pathname).toEqual("/ranking");
+  });
+
+  it("should call the function that performs the login on google", () => {
+    renderLogin();
+
+    const button = screen.getByTestId("button-google");
 
     fireEvent.click(button);
 

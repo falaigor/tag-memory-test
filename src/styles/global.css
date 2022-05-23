@@ -8,6 +8,10 @@ body {
   @apply bg-[#E5E5E5];
 }
 
+.active-nav {
+  @apply text-blue-600 before:content-['']  before:w-2 before:h-16 before:bg-blue-600 before:absolute before:top-0 before:left-0 before:rounded-r-lg;
+}
+
 @layer components {
   .font-montserrat {
     font-family: "Montserrat", sans-serif;

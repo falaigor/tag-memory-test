@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { GithubLogo } from "phosphor-react";
-import { Button } from "../components/Button/Button";
+import { GithubLogo, GoogleLogo } from "phosphor-react";
 
 export function Login() {
   const navigate = useNavigate();
@@ -21,7 +20,30 @@ export function Login() {
             You don’t think you should login first and behave like human not
             robot.
           </p>
-          <Button label="Github" onClick={handleClick} icon={<GithubLogo />} />
+
+          <button
+            data-testid="button-github"
+            type="button"
+            onClick={handleClick}
+            className="w-full font-montserrat flex p-4 my-2 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-zinc-800 text-zinc-100 hover:bg-zinc-600 transition-all"
+          >
+            <div data-testid="button-icon" className="mr-1 text-3xl">
+              <GithubLogo />
+            </div>
+            Github
+          </button>
+
+          <button
+            data-testid="button-google"
+            type="button"
+            onClick={handleClick}
+            className="w-full font-montserrat flex p-4 my-2 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-red-800 text-zinc-100 hover:bg-red-600 transition-all"
+          >
+            <div data-testid="button-icon" className="mr-1 text-3xl">
+              <GoogleLogo />
+            </div>
+            Google
+          </button>
         </div>
       </div>
     </div>

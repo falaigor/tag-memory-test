@@ -1,13 +1,21 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { BrowserRouter } from "react-router-dom";
 
 import { Home } from "../Home";
 
 const handleClick = jest.fn();
 
 describe("Home", () => {
+  const renderHome = () =>
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>
+    );
+
   it("should render Home page", () => {
-    render(<Home />);
+    renderHome();
 
     expect(screen.getByTestId("home-page")).toBeInTheDocument();
   });
@@ -15,7 +23,7 @@ describe("Home", () => {
   it("should add an item to the list if there is an array of tags and there is no array of guessed tags", async () => {
     const tag = "html";
 
-    render(<Home />);
+    renderHome();
 
     const button = screen.getByTestId("button");
     const input = screen.getByTestId("input");
@@ -31,7 +39,7 @@ describe("Home", () => {
   it("should not add tag if it does not exist in the tag array", async () => {
     const tag = "html2";
 
-    render(<Home />);
+    renderHome();
 
     const button = screen.getByTestId("button");
     const input = screen.getByTestId("input");
@@ -45,7 +53,7 @@ describe("Home", () => {
   it("should add several items to the list if there is an array of tags and there is not an array of guessed tags", async () => {
     const tags = ["html", "base", "main"];
 
-    render(<Home />);
+    renderHome();
 
     const button = screen.getByTestId("button");
     const input = screen.getByTestId("input");
@@ -64,7 +72,7 @@ describe("Home", () => {
     const tags = ["html", "base"];
     const tag1 = "html";
 
-    render(<Home />);
+    renderHome();
 
     const button = screen.getByTestId("button");
     const input = screen.getByTestId("input");

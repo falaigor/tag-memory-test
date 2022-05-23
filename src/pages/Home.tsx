@@ -6,6 +6,8 @@ import { Countdown } from "../components/Home/Countdown";
 import { Modal } from "../components/Home/Modal";
 
 import { tags } from "../utils/tags";
+import { ViewPage } from "../components/ViewPage/ViewPage";
+import { Footer } from "../components/Footer/Footer";
 
 export function Home() {
   let timer = useRef(1 * 60);
@@ -74,7 +76,7 @@ export function Home() {
   }
 
   return (
-    <>
+    <ViewPage>
       <Modal
         isOpen={isModalOpen}
         closeModal={() => setIsModalOpen(false)}
@@ -85,7 +87,7 @@ export function Home() {
 
       <div
         data-testid="home-page"
-        className="w-screen flex items-center justify-center mobile:p-4"
+        className="flex items-center justify-center mobile:p-4"
       >
         <div className="max-w-3xl w-full flex flex-col">
           <div>
@@ -115,21 +117,7 @@ export function Home() {
           <List guesstedTags={guesstedTags} />
         </div>
       </div>
-
-      <div className="relative py-4">
-        <footer className="w-screen flex items-center justify-center absolute bottom-0">
-          <h2 className="text-sm py-2">
-            HTML Tags Memory Test by{" "}
-            <a
-              className="underline underline-offset-2"
-              target="_blank"
-              href="https://github.com/falaigor"
-            >
-              @falaigors
-            </a>
-          </h2>
-        </footer>
-      </div>
-    </>
+      <Footer />
+    </ViewPage>
   );
 }

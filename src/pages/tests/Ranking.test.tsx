@@ -1,15 +1,23 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import { Ranking } from "../Ranking";
 
 describe("Ranking", () => {
+  const renderRanking = () =>
+    render(
+      <BrowserRouter>
+        <Ranking />
+      </BrowserRouter>
+    );
+
   it("should render Ranking Page", () => {
-    render(<Ranking />);
+    renderRanking();
 
     expect(screen.getByTestId("ranking-page")).toBeInTheDocument();
   });
 
   it("should render the Ranking List containing 2 items", () => {
-    render(<Ranking />);
+    renderRanking();
 
     expect(screen.getAllByTestId("ranking-item")).toHaveLength(2);
   });
