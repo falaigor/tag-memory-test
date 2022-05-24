@@ -1,10 +1,11 @@
 export function Footer() {
   return (
-    <div className="relative py-4">
+    <div data-testid="footer" className="relative py-4">
       <footer className="flex items-center justify-center">
         <h2 className="text-sm py-2">
           HTML Tags Memory Test by{" "}
           <a
+            data-testid="github-url"
             className="underline underline-offset-2"
             target="_blank"
             href="https://github.com/falaigor"

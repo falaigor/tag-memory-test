@@ -23,6 +23,7 @@ describe("AppRoutes", () => {
 
   it('should render Ranking Page when url equal "/ranking"', () => {
     renderWithRouter(<AppRoutes />, { route: "/ranking" });
+
     expect(screen.getByTestId("ranking-page")).toBeInTheDocument();
   });
 });
