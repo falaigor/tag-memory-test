@@ -1,6 +1,6 @@
 interface InputProps {
   value: string;
-  onChange: (event) => void;
+  onChange?: (event) => void;
   onKeyPress: (event) => void;
 }
 

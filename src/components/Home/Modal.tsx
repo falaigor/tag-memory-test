@@ -1,25 +1,20 @@
 import { Transition, Dialog } from "@headlessui/react";
-import { CaretRight } from "phosphor-react";
+import { CaretRight, X } from "phosphor-react";
 import { Fragment } from "react";
+import { useChallenge } from "../../contexts/challenge";
+import { Link } from "react-router-dom";
 
 interface ModalProps {
   isOpen: boolean;
-  totalTime: number;
-  totalGuessted: number;
-  restart: () => void;
   closeModal: () => void;
 }
 
-export function Modal({
-  isOpen,
-  closeModal,
-  totalTime,
-  totalGuessted,
-  restart,
-}: ModalProps) {
-  function handleClickRestart() {
-    restart();
-    closeModal();
+export function Modal({ isOpen, closeModal }: ModalProps) {
+  const { totalTime, guesstedTags } = useChallenge();
+  const totalGuessted = guesstedTags.length;
+
+  function restart() {
+    window.location.reload();
   }
 
   return (
@@ -54,6 +49,13 @@ export function Modal({
                     as="h3"
                     className="text-4xl py-4 font-medium leading-6 text-gray-900 font-montserrat"
                   >
+                    <Link
+                      className="w-full flex justify-end mb-4"
+                      to=""
+                      onClick={closeModal}
+                    >
+                      <X size={20} />
+                    </Link>
                     Congratulations
                   </Dialog.Title>
                   <div data-testid="result" className="mt-4 mb-6">
@@ -75,11 +77,18 @@ export function Modal({
                   <div className="mt-4">
                     <button
                       type="button"
-                      className="w-full flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-800 text-zinc-100 hover:bg-blue-600 transition-all"
-                      onClick={handleClickRestart}
+                      className="w-full my-4 flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-800 text-zinc-100 hover:bg-blue-600 transition-all"
+                      onClick={restart}
                     >
                       Restart <CaretRight weight="bold" />
                     </button>
+
+                    <Link
+                      className="w-full my-4 flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900 hover:bg-yellow-600 transition-all"
+                      to="/ranking"
+                    >
+                      Ranking <CaretRight weight="bold" />
+                    </Link>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

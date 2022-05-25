@@ -1,17 +1,12 @@
-interface CountdownProps {
-  countdown: number;
-}
+import { useChallenge } from "../../contexts/challenge";
 
-export const Countdown = ({ countdown }: CountdownProps) => {
-  const minutes = Math.floor(countdown / 60);
-  const seconds = countdown % 60;
+export const Countdown = () => {
+  const { time } = useChallenge();
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
 
-  const [minuteLeft, minuteRight] = String(minutes)
-    .padStart(2, "0")
-    .split("");
-  const [secondLeft, secondRight] = String(seconds)
-    .padStart(2, "0")
-    .split("");
+  const [minuteLeft, minuteRight] = String(minutes).padStart(2, "0").split("");
+  const [secondLeft, secondRight] = String(seconds).padStart(2, "0").split("");
 
   return (
     <div

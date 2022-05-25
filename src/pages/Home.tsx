@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from "react";
 import { List } from "../components/Home/List";
 import { Input } from "../components/Home/Input";
 import { Button } from "../components/Home/Button";
@@ -8,44 +7,17 @@ import { Modal } from "../components/Home/Modal";
 import { tags } from "../utils/tags";
 import { ViewPage } from "../components/ViewPage/ViewPage";
 import { Footer } from "../components/Footer/Footer";
+import { useChallenge } from "../contexts/challenge";
+import { useEffect, useState } from "react";
 
 export function Home() {
-  let timer = useRef(1 * 60);
-
+  const { value, setValue, guesstedTags, startChallenge, finishChallenge } =
+    useChallenge();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [countdown, setCountdown] = useState(timer.current);
-  const [totalTime, setTotalTime] = useState(0);
-  const [value, setValue] = useState("");
-  const [guesstedTags, setGuesstedTags] = useState([]);
-  const [startCountdown, setStartCountdown] = useState(false);
-
-  const increaseCountdownTimer = () => (timer.current = timer.current + 5);
-  const cleanInput = () => setValue("");
-
-  function existsInTags(value) {
-    return tags.includes(value.toLowerCase());
-  }
-
-  function existsInGuesstedTags(value) {
-    return guesstedTags.includes(value.toLowerCase());
-  }
-
-  function addedGuesstedTags(value) {
-    if (existsInTags(value) && !existsInGuesstedTags(value) && countdown > 0) {
-      setGuesstedTags([...guesstedTags, value.toLowerCase()]);
-      increaseCountdownTimer();
-      cleanInput();
-    }
-  }
-
-  function handleClick() {
-    setStartCountdown(true);
-    addedGuesstedTags(value);
-  }
 
   function handleKeyPress(event) {
     if (event.keyCode === 13) {
-      handleClick();
+      startChallenge();
     }
   }
 
@@ -53,37 +25,17 @@ export function Home() {
     return tags.length - guesstedTags.length;
   }
 
-  function stopCountdownGuesstedAllTags() {
-    if (tags.length - guesstedTags.length === 0) setStartCountdown(false);
-  }
-
   useEffect(() => {
-    if (startCountdown === true && countdown > 0) {
-      setTimeout(() => {
-        setCountdown((timer.current = timer.current - 1));
-        setTotalTime(totalTime + 1);
-      }, 1000);
-    } else if (tags.length === guesstedTags.length || countdown === 0) {
-      setStartCountdown(false);
-      setIsModalOpen(true);
-    }
+    if (finishChallenge) setIsModalOpen(true);
+  }, [finishChallenge]);
 
-    stopCountdownGuesstedAllTags();
-  }, [countdown, startCountdown]);
-
-  function restart() {
-    window.location.reload();
+  function closeModal() {
+    setIsModalOpen(false);
   }
 
   return (
     <ViewPage>
-      <Modal
-        isOpen={isModalOpen}
-        closeModal={() => setIsModalOpen(false)}
-        restart={restart}
-        totalTime={totalTime}
-        totalGuessted={guesstedTags.length}
-      />
+      <Modal isOpen={isModalOpen} closeModal={closeModal} />
 
       <div
         data-testid="home-page"
@@ -101,7 +53,7 @@ export function Home() {
           <div className="flex p-4 my-4 rounded-2xl justify-between bg-zinc-100 border-2 border-zinc-900 drop-shadow-stroke items-center">
             <p className="text-3xl font-montserrat">Time Left</p>
 
-            <Countdown countdown={timer.current} />
+            <Countdown />
           </div>
 
           <div className="flex flex-row w-full gap-2">
@@ -111,10 +63,10 @@ export function Home() {
               onKeyPress={handleKeyPress}
             />
 
-            <Button onClick={() => handleClick()} />
+            <Button onClick={() => startChallenge()} />
           </div>
 
-          <List guesstedTags={guesstedTags} />
+          <List />
         </div>
       </div>
       <Footer />

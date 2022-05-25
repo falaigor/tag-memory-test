@@ -1,8 +1,8 @@
-interface ListProps {
-  guesstedTags: string[];
-}
+import { useChallenge } from "../../contexts/challenge";
 
-export function List({ guesstedTags }: ListProps) {
+export function List() {
+  const { guesstedTags } = useChallenge();
+
   return (
     <div data-testid="list">
       <div className="flex p-4 mt-4 rounded-t-2xl justify-between bg-zinc-100 border-2 border-zinc-900 items-center">

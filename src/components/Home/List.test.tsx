@@ -2,9 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { List } from "./List";
 
 describe("List", () => {
-  const guesstedTags = ["tag1", "tag2", "tag3", "tag4"];
-
-  const renderList = () => render(<List guesstedTags={guesstedTags} />);
+  const renderList = () => render(<List />);
 
   it("should render List component", () => {
     renderList();
