@@ -1,12 +1,14 @@
 import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Timer, Medal, SignIn } from "phosphor-react";
+import { Timer, Medal, SignIn, SignOut } from "phosphor-react";
+import { useAuth } from "../../contexts/auth";
 
 interface ViewPageProps {
   children: ReactNode;
 }
 
 export function ViewPage({ children }: ViewPageProps) {
+  const { isUserLogger, signOut } = useAuth();
   const { pathname } = useLocation();
 
   return (
@@ -34,11 +36,19 @@ export function ViewPage({ children }: ViewPageProps) {
               </li>
             </Link>
 
-            <Link data-testid="login-link" to="/login">
-              <li className="flex w-16 justify-center relative items-center text-3xl p-2 h-16">
-                <SignIn weight="bold" />
-              </li>
-            </Link>
+            {isUserLogger ? (
+              <Link data-testid="logout-link" to="" onClick={signOut}>
+                <li className="flex w-16 justify-center relative items-center text-3xl p-2 h-16">
+                  <SignOut weight="bold" />
+                </li>
+              </Link>
+            ) : (
+              <Link data-testid="login-link" to="/login">
+                <li className="flex w-16 justify-center relative items-center text-3xl p-2 h-16">
+                  <SignIn weight="bold" />
+                </li>
+              </Link>
+            )}
           </ul>
         </nav>
       </aside>

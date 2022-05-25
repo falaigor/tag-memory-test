@@ -1,12 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/auth";
 import { GithubLogo, GoogleLogo } from "phosphor-react";
 
 export function Login() {
-  const navigate = useNavigate();
-
-  function handleClick() {
-    navigate("/ranking");
-  }
+  const { signInGithubUrl } = useAuth();
 
   return (
     <div
@@ -21,29 +17,29 @@ export function Login() {
             robot.
           </p>
 
-          <button
+          <a
             data-testid="button-github"
             type="button"
-            onClick={handleClick}
+            href={signInGithubUrl}
             className="w-full font-montserrat flex p-4 my-2 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-zinc-800 text-zinc-100 hover:bg-zinc-600 transition-all"
           >
             <div data-testid="button-icon" className="mr-1 text-3xl">
               <GithubLogo />
             </div>
             Github
-          </button>
+          </a>
 
-          <button
+          <a
             data-testid="button-google"
             type="button"
-            onClick={handleClick}
+            href={signInGithubUrl}
             className="w-full font-montserrat flex p-4 my-2 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-red-800 text-zinc-100 hover:bg-red-600 transition-all"
           >
             <div data-testid="button-icon" className="mr-1 text-3xl">
               <GoogleLogo />
             </div>
             Google
-          </button>
+          </a>
         </div>
       </div>
     </div>
