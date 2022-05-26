@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import { AuthContext } from "./auth";
 import { Home } from "../pages/Home";
+import { AuthContext } from "./auth";
 
 describe("Auth Context", () => {
   afterEach(() => {

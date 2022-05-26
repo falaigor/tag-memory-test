@@ -1,35 +1,44 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { renderWithChallengeContext } from "../../tests/renderWithChallengeContext";
 import userEvent from "@testing-library/user-event";
-import { BrowserRouter } from "react-router-dom";
 
 import { Home } from "../Home";
 
 const handleClick = jest.fn();
 
 describe("Home", () => {
-  const renderHome = () =>
-    render(
-      <BrowserRouter>
-        <Home />
-      </BrowserRouter>
-    );
+  const providerProps = {
+    value: {
+      value: "",
+      setValue: jest.fn(),
+      time: 12,
+      countdown: 10,
+      totalTime: 0,
+      guesstedTags: [],
+      startCountdown: false,
+      finishChallenge: false,
+      startChallenge: jest.fn(),
+    },
+  };
 
   it("should render Home page", () => {
-    renderHome();
+    renderWithChallengeContext(<Home />, providerProps, {});
 
     expect(screen.getByTestId("home-page")).toBeInTheDocument();
   });
 
-  it("should add an item to the list if there is an array of tags and there is no array of guessed tags", async () => {
+  fit("should add an item to the list if there is an array of tags and there is no array of guessed tags", async () => {
     const tag = "html";
 
-    renderHome();
+    renderWithChallengeContext(<Home />, providerProps, {});
 
     const button = screen.getByTestId("button");
     const input = screen.getByTestId("input");
 
     await userEvent.type(input, tag);
     await fireEvent.click(button);
+
+    console.log(providerProps.value.guesstedTags);
 
     await waitFor(() => {
       expect(screen.getAllByTestId("tag-item")).toHaveLength(1);
@@ -39,7 +48,7 @@ describe("Home", () => {
   it("should not add tag if it does not exist in the tag array", async () => {
     const tag = "html2";
 
-    renderHome();
+    renderWithChallengeContext(<Home />, providerProps, {});
 
     const button = screen.getByTestId("button");
     const input = screen.getByTestId("input");
@@ -53,7 +62,7 @@ describe("Home", () => {
   it("should add several items to the list if there is an array of tags and there is not an array of guessed tags", async () => {
     const tags = ["html", "base", "main"];
 
-    renderHome();
+    renderWithChallengeContext(<Home />, providerProps, {});
 
     const button = screen.getByTestId("button");
     const input = screen.getByTestId("input");
@@ -72,7 +81,7 @@ describe("Home", () => {
     const tags = ["html", "base"];
     const tag1 = "html";
 
-    renderHome();
+    renderWithChallengeContext(<Home />, providerProps, {});
 
     const button = screen.getByTestId("button");
     const input = screen.getByTestId("input");

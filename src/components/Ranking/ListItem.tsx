@@ -1,6 +1,4 @@
-import avatarUrl from "../../images/avatar.png";
-
-export function RankingListItem() {
+export function RankingListItem({ user, time, position, guessedTags }) {
   return (
     <li
       data-testid="ranking-item"
@@ -11,16 +9,17 @@ export function RankingListItem() {
           data-testid="position"
           className="max-w-[50px] w-full h-[50px] flex border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900"
         >
-          1
+          {position}
         </div>
         <div className="flex items-center">
           <img
             data-testid="avatar"
-            className="w-[100px] mx-4"
-            src={avatarUrl}
+            className="w-[100px] mx-4 rounded-full border-4 border-zinc-900"
+            src={user.avatar_url}
           />
+
           <p data-testid="name" className="text-2xl font-montserrat">
-            Igor Santos
+            {user.name}
           </p>
         </div>
       </div>
@@ -30,14 +29,14 @@ export function RankingListItem() {
           data-testid="guessed-tags"
           className="text-xl text-right mx-4 font-montserrat"
         >
-          79 tags guesseds
+          {guessedTags} tags guesseds
         </p>
 
         <div
           data-testid="seconds"
           className="max-w-[150px] w-full h-[50px] flex border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900"
         >
-          432 seconds
+          {time} seconds
         </div>
       </div>
     </li>

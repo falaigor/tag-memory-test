@@ -1,8 +1,10 @@
+import { Fragment, useEffect } from "react";
 import { Transition, Dialog } from "@headlessui/react";
 import { CaretRight, X } from "phosphor-react";
-import { Fragment } from "react";
-import { useChallenge } from "../../contexts/challenge";
 import { Link } from "react-router-dom";
+
+import { useChallenge } from "../../contexts/challenge";
+import { api } from "../../services/api";
 
 interface ModalProps {
   isOpen: boolean;
@@ -10,12 +12,32 @@ interface ModalProps {
 }
 
 export function Modal({ isOpen, closeModal }: ModalProps) {
-  const { totalTime, guesstedTags } = useChallenge();
-  const totalGuessted = guesstedTags.length;
+  const { totalTime, guessedTags, finishChallenge } = useChallenge();
+  const totalGuessed = guessedTags.length;
+
+  const token = localStorage.getItem("@tagMemoryTest:token");
 
   function restart() {
     window.location.reload();
   }
+
+  useEffect(() => {
+    if (finishChallenge) {
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+
+      api
+        .post("/ranking", {
+          guessedTags: totalGuessed,
+          time: totalTime,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
+  }, [finishChallenge]);
 
   return (
     <Transition data-testid="modal" appear show={isOpen} as={Fragment}>
@@ -50,7 +72,7 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                     className="text-4xl py-4 font-medium leading-6 text-gray-900 font-montserrat"
                   >
                     <Link
-                      className="w-full flex justify-end mb-4"
+                      className="w-full flex justify-end mb-4 outline-none"
                       to=""
                       onClick={closeModal}
                     >
@@ -62,9 +84,9 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                     <p className=" text-gray-500">
                       You guessed
                       <span className="text-blue-800 font-bold">
-                        {totalGuessted > 1
-                          ? ` ${totalGuessted} tags `
-                          : ` ${totalGuessted} tag `}
+                        {totalGuessed > 1
+                          ? ` ${totalGuessed} tags `
+                          : ` ${totalGuessed} tag `}
                       </span>
                       in{" "}
                       <span className="text-blue-800 font-bold">

@@ -1,7 +1,7 @@
 import { useChallenge } from "../../contexts/challenge";
 
 export function List() {
-  const { guesstedTags } = useChallenge();
+  const { guessedTags } = useChallenge();
 
   return (
     <div data-testid="list">
@@ -10,7 +10,7 @@ export function List() {
       </div>
 
       <div className="flex flex-col p-4 rounded-b-2xl justify-between bg-zinc-100 border-t-0 border-b-2 border-x-2 border-zinc-900">
-        {guesstedTags.map((tag) => (
+        {guessedTags.map((tag) => (
           <li data-testid="tag-item" key={tag} className="list-decimal text-lg">
             {tag}
           </li>

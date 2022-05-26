@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Timer, Medal, SignIn, SignOut } from "phosphor-react";
 import { useAuth } from "../../contexts/auth";
+import { Footer } from "../Footer/Footer";
 
 interface ViewPageProps {
   children: ReactNode;
@@ -12,8 +13,11 @@ export function ViewPage({ children }: ViewPageProps) {
   const { pathname } = useLocation();
 
   return (
-    <main data-testid="view-page" className="flex w-screen">
-      <aside className="w-16 h-screen flex items-center bg-zinc-100 shadow-lg shadow-zinc-400">
+    <main
+      data-testid="view-page"
+      className="flex w-full overflow-x-hidden overflow-y-hidden"
+    >
+      <aside className="w-16 h-screen fixed flex items-center bg-zinc-100 shadow-lg shadow-zinc-400">
         <nav>
           <ul>
             <Link data-testid="home-link" to="/">
@@ -52,7 +56,10 @@ export function ViewPage({ children }: ViewPageProps) {
           </ul>
         </nav>
       </aside>
-      <div className="w-screen justify-center items-center">{children}</div>
+      <div className="w-screen justify-center items-center">
+        {children}
+        <Footer />
+      </div>
     </main>
   );
 }

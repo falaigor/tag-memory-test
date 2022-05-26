@@ -14,7 +14,7 @@ interface ChallengeContextData {
   time: number;
   countdown: number;
   totalTime: number;
-  guesstedTags: string[];
+  guessedTags: string[];
   startCountdown: boolean;
   finishChallenge: boolean;
   startChallenge: () => void;
@@ -27,14 +27,14 @@ interface ChallengeProviderProps {
 }
 
 export function ChallengeProvider({ children }: ChallengeProviderProps) {
-  let timer = useRef(1 * 60);
+  let timer = useRef(1 * 1);
 
   const time = timer.current;
 
   const [countdown, setCountdown] = useState(timer.current);
   const [totalTime, setTotalTime] = useState(0);
   const [value, setValue] = useState("");
-  const [guesstedTags, setGuesstedTags] = useState([]);
+  const [guessedTags, setGuessedTags] = useState([]);
   const [startCountdown, setStartCountdown] = useState(false);
   const [finishChallenge, setFinishChallenge] = useState(false);
 
@@ -45,13 +45,13 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
     return tags.includes(value.toLowerCase());
   }
 
-  function existsInGuesstedTags(value) {
-    return guesstedTags.includes(value.toLowerCase());
+  function existsInGuessedTags(value) {
+    return guessedTags.includes(value.toLowerCase());
   }
 
   function addedGuesstedTags(value) {
-    if (existsInTags(value) && !existsInGuesstedTags(value) && countdown > 0) {
-      setGuesstedTags([...guesstedTags, value.toLowerCase()]);
+    if (existsInTags(value) && !existsInGuessedTags(value) && countdown > 0) {
+      setGuessedTags([...guessedTags, value.toLowerCase()]);
       increaseCountdownTimer();
       cleanInput();
     }
@@ -63,7 +63,7 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
   }
 
   function guessedAllTags() {
-    if (tags.length - guesstedTags.length === 0) {
+    if (tags.length - guessedTags.length === 0) {
       setStartCountdown(false);
       setFinishChallenge(true);
     }
@@ -75,7 +75,7 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
         setCountdown((timer.current = timer.current - 1));
         setTotalTime(totalTime + 1);
       }, 1000);
-    } else if (tags.length === guesstedTags.length || countdown === 0) {
+    } else if (tags.length === guessedTags.length || countdown === 0) {
       setStartCountdown(false);
       setFinishChallenge(true);
     }
@@ -91,7 +91,7 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
         setValue,
         totalTime,
         countdown,
-        guesstedTags,
+        guessedTags,
         startCountdown,
         startChallenge,
         finishChallenge,

@@ -11,7 +11,7 @@ import { useChallenge } from "../contexts/challenge";
 import { useEffect, useState } from "react";
 
 export function Home() {
-  const { value, setValue, guesstedTags, startChallenge, finishChallenge } =
+  const { value, setValue, guessedTags, startChallenge, finishChallenge } =
     useChallenge();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -22,7 +22,7 @@ export function Home() {
   }
 
   function countRecallTag() {
-    return tags.length - guesstedTags.length;
+    return tags.length - guessedTags.length;
   }
 
   useEffect(() => {
@@ -69,7 +69,6 @@ export function Home() {
           <List />
         </div>
       </div>
-      <Footer />
     </ViewPage>
   );
 }

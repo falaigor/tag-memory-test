@@ -6,16 +6,10 @@ import {
   useState,
 } from "react";
 import { api } from "../services/api";
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  avatar_url: string;
-}
+import { UserType } from "../utils/types";
 
 interface AuthContextData {
-  user: User | null;
+  user: UserType | null;
   isUserLogger: boolean;
   signInGithubUrl: string;
   signOut: () => void;
@@ -38,7 +32,7 @@ interface AuthResponse {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<UserType | null>(null);
   const [isUserLogger, setIsUserLogger] = useState(false);
   const signInGithubUrl = `http://github.com/login/oauth/authorize?soce=user&client_id=a11d59f451f1886cd63f`;
 
@@ -66,7 +60,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     if (token) {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
 
-      api.get<User>("profile").then((response) => {
+      api.get<UserType>("profile").then((response) => {
         setUser(response.data);
         setIsUserLogger(true);
       });
