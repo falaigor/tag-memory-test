@@ -27,7 +27,7 @@ interface ChallengeProviderProps {
 }
 
 export function ChallengeProvider({ children }: ChallengeProviderProps) {
-  let timer = useRef(1 * 1);
+  let timer = useRef(1 * 60);
 
   const time = timer.current;
 
