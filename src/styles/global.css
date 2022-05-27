@@ -9,7 +9,7 @@ body {
 }
 
 .active-nav {
-  @apply text-blue-600 before:content-['']  before:w-2 before:h-16 before:bg-blue-600 before:absolute before:top-0 before:left-0 before:rounded-r-lg;
+  @apply text-blue-600 before:content-[''] before:w-1 md:before:w-2 before:h-16 before:bg-blue-600 before:absolute before:top-0 before:left-0 before:rounded-r-lg;
 }
 
 @layer components {

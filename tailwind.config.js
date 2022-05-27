@@ -1,10 +1,10 @@
 module.exports = {
-  content: ["./src/**/*.{html,js,tsx}"],
+  content: ["./src/**/*.{tsx, jsx}"],
   theme: {
-    screens: {
-      mobile: "320px",
-    },
     extend: {
+      screens: {
+        mobile: "320px",
+      },
       color: {
         yellow: {
           500: "#FFBD12",
