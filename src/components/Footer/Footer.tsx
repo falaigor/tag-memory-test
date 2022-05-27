@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <div data-testid="footer" className="relative py-4">
+    <div data-testid="footer" className="relative py-4 mb-16">
       <footer className="flex items-center justify-center">
         <h2 className="text-sm py-2">
           HTML Tags Memory Test by{" "}

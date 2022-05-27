@@ -9,11 +9,26 @@ body {
 }
 
 .active-nav {
-  @apply text-blue-600 before:content-[''] before:w-1 md:before:w-2 before:h-16 before:bg-blue-600 before:absolute before:top-0 before:left-0 before:rounded-r-lg;
+  @apply text-blue-600 
+  before:content-[''] 
+  before:h-1 
+  sm:before:h-16 
+  sm:before:w-2 
+  before:w-16 
+  before:bg-blue-600 
+  before:absolute 
+  before:top-0 
+  before:left-0 
+  before:rounded-b-lg 
+  sm:before:rounded-b-none 
+  sm:before:rounded-r-lg;
 }
 
 @layer components {
   .font-montserrat {
     font-family: "Montserrat", sans-serif;
   }
+}
+.te {
+  @apply text-blue-600 before:content-['']  sm:before:w-2  before:bg-blue-600 before:absolute before:top-0 before:left-0;
 }
