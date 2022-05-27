@@ -15,19 +15,6 @@ export const Ranking = () => {
             </h1>
           </div>
 
-          <div className="flex p-4 my-4 rounded-2xl justify-between bg-zinc-100 border-2 border-zinc-900 drop-shadow-stroke items-center">
-            <p className="text-3xl font-montserrat">
-              Your position in the ranking
-            </p>
-
-            <div
-              data-testid="positon-number"
-              className="flex flex-row font-montserrat text-7xl"
-            >
-              300
-            </div>
-          </div>
-
           <RankingList />
         </div>
       </div>
