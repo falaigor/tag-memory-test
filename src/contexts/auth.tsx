@@ -34,7 +34,7 @@ interface AuthResponse {
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<UserType | null>(null);
   const [isUserLogger, setIsUserLogger] = useState(false);
-  const signInGithubUrl = `http://github.com/login/oauth/authorize?soce=user&client_id=a11d59f451f1886cd63f`;
+  const signInGithubUrl = `http://github.com/login/oauth/authorize?soce=user&client_id=${process.env.VITE_GITHUB_API_CLIENT_ID}`;
 
   async function signInGithub(githubCode: string) {
     const response = await api.post<AuthResponse>("authenticate", {
