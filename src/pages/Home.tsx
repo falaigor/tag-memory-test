@@ -1,17 +1,15 @@
+import { useEffect, useState } from "react";
+import { useChallenge } from "../contexts/challenge";
+
 import { List } from "../components/Home/List";
 import { Input } from "../components/Home/Input";
 import { Button } from "../components/Home/Button";
-import { Countdown } from "../components/Home/Countdown";
 import { Modal } from "../components/Home/Modal";
-
-import { tags } from "../utils/tags";
+import { Countdown } from "../components/Home/Countdown";
 import { ViewPage } from "../components/ViewPage/ViewPage";
-import { Footer } from "../components/Footer/Footer";
-import { useChallenge } from "../contexts/challenge";
-import { useEffect, useState } from "react";
 
 export function Home() {
-  const { value, setValue, guessedTags, startChallenge, finishChallenge } =
+  const { value, setValue, countRecallTag, startChallenge, finishChallenge } =
     useChallenge();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -19,10 +17,6 @@ export function Home() {
     if (event.keyCode === 13) {
       startChallenge();
     }
-  }
-
-  function countRecallTag() {
-    return tags.length - guessedTags.length;
   }
 
   useEffect(() => {
@@ -47,7 +41,7 @@ export function Home() {
               HTML Tag memory test
             </h1>
             <h2 className="text-xl">How many HTML tags can you remember?</h2>
-            <h3 className="pb-2">{countRecallTag()} to recall…</h3>
+            <h3 className="pb-2">{countRecallTag} to recall…</h3>
           </div>
 
           <div className="flex p-4 my-4 rounded-2xl justify-between bg-zinc-100 border-2 border-zinc-900 drop-shadow-stroke items-center">

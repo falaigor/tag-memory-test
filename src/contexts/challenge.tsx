@@ -14,7 +14,9 @@ interface ChallengeContextData {
   time: number;
   countdown: number;
   totalTime: number;
-  guessedTags: string[];
+  guessedTags: string[] | null;
+  totalGuessed: number;
+  countRecallTag: number;
   startCountdown: boolean;
   finishChallenge: boolean;
   startChallenge: () => void;
@@ -41,6 +43,9 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
   const increaseCountdownTimer = () => (timer.current = timer.current + 5);
   const cleanInput = () => setValue("");
 
+  const countRecallTag = tags.length - guessedTags.length;
+  const totalGuessed = guessedTags.length;
+
   function existsInTags(value) {
     return tags.includes(value.toLowerCase());
   }
@@ -63,7 +68,7 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
   }
 
   function guessedAllTags() {
-    if (tags.length - guessedTags.length === 0) {
+    if (countRecallTag === 0) {
       setStartCountdown(false);
       setFinishChallenge(true);
     }
@@ -92,6 +97,8 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
         totalTime,
         countdown,
         guessedTags,
+        totalGuessed,
+        countRecallTag,
         startCountdown,
         startChallenge,
         finishChallenge,

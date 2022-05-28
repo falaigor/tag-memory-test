@@ -12,9 +12,7 @@ interface ModalProps {
 }
 
 export function Modal({ isOpen, closeModal }: ModalProps) {
-  const { totalTime, guessedTags, finishChallenge } = useChallenge();
-  const totalGuessed = guessedTags.length;
-
+  const { totalTime, finishChallenge, totalGuessed } = useChallenge();
   const token = localStorage.getItem("@tagMemoryTest:token");
 
   function restart() {
