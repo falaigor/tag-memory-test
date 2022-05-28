@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import { useChallenge } from "../../contexts/challenge";
 import { api } from "../../services/api";
+import { AppRoute } from "../../routes/routes";
 
 interface ModalProps {
   isOpen: boolean;
@@ -103,12 +104,12 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                       Restart <CaretRight weight="bold" />
                     </button>
 
-                    <Link
+                    <a
+                      href={AppRoute.Ranking}
                       className="w-full my-4 flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900 hover:bg-yellow-600 transition-all"
-                      to="/ranking"
                     >
                       Ranking <CaretRight weight="bold" />
-                    </Link>
+                    </a>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

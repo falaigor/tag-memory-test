@@ -5,6 +5,7 @@ import { Timer, Medal, SignIn, SignOut } from "phosphor-react";
 import { useAuth } from "../../contexts/auth";
 import { Footer } from "../Footer/Footer";
 import { Tooltip } from "../Tooltip";
+import { AppRoute } from "../../routes/routes";
 
 interface ViewPageProps {
   children: ReactNode;
@@ -23,27 +24,27 @@ export function ViewPage({ children }: ViewPageProps) {
         <nav>
           <ul className="w-screen sm:w-16 flex sm:flex-col justify-center item-center">
             <Tooltip tooltipMessage="Home">
-              <Link data-testid="home-link" to="/">
+              <a data-testid="home-link" href={AppRoute.Home}>
                 <li
                   className={`${
-                    pathname === "/" && "active-nav"
+                    pathname === AppRoute.Home && "active-nav"
                   } flex w-16 justify-center relative items-center text-3xl p-2 h-16`}
                 >
                   <Timer weight="bold" />
                 </li>
-              </Link>
+              </a>
             </Tooltip>
 
             <Tooltip tooltipMessage="Ranking">
-              <Link data-testid="ranking-link" to="/ranking">
+              <a data-testid="ranking-link" href={AppRoute.Ranking}>
                 <li
                   className={`${
-                    pathname === "/ranking" && "active-nav"
+                    pathname === AppRoute.Ranking && "active-nav"
                   } flex w-16 justify-center relative items-center text-3xl p-2 h-16`}
                 >
                   <Medal weight="bold" />
                 </li>
-              </Link>
+              </a>
             </Tooltip>
 
             {isUserLogger ? (
@@ -56,11 +57,11 @@ export function ViewPage({ children }: ViewPageProps) {
               </Tooltip>
             ) : (
               <Tooltip tooltipMessage="Login">
-                <Link data-testid="login-link" to="/login">
+                <a data-testid="login-link" href={AppRoute.Login}>
                   <li className="flex w-16 justify-center relative items-center text-3xl p-2 h-16">
                     <SignIn weight="bold" />
                   </li>
-                </Link>
+                </a>
               </Tooltip>
             )}
           </ul>
