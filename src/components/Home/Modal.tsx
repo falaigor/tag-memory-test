@@ -16,10 +16,6 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
   const { totalTime, finishChallenge, totalGuessed } = useChallenge();
   const token = localStorage.getItem("@tagMemoryTest:token");
 
-  function restart() {
-    window.location.reload();
-  }
-
   useEffect(() => {
     if (finishChallenge) {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
@@ -96,20 +92,22 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                   </div>
 
                   <div className="mt-4">
-                    <button
+                    <Link
                       type="button"
                       className="w-full my-4 flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-800 text-zinc-100 hover:bg-blue-600 transition-all"
-                      onClick={restart}
+                      to={AppRoute.Home}
+                      reloadDocument
                     >
                       Restart <CaretRight weight="bold" />
-                    </button>
+                    </Link>
 
-                    <a
-                      href={AppRoute.Ranking}
+                    <Link
+                      to={AppRoute.Ranking}
+                      reloadDocument
                       className="w-full my-4 flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900 hover:bg-yellow-600 transition-all"
                     >
                       Ranking <CaretRight weight="bold" />
-                    </a>
+                    </Link>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

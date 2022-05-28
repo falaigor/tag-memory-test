@@ -24,7 +24,7 @@ export function ViewPage({ children }: ViewPageProps) {
         <nav>
           <ul className="w-screen sm:w-16 flex sm:flex-col justify-center item-center">
             <Tooltip tooltipMessage="Home">
-              <a data-testid="home-link" href={AppRoute.Home}>
+              <Link data-testid="home-link" to={AppRoute.Home} reloadDocument>
                 <li
                   className={`${
                     pathname === AppRoute.Home && "active-nav"
@@ -32,11 +32,15 @@ export function ViewPage({ children }: ViewPageProps) {
                 >
                   <Timer weight="bold" />
                 </li>
-              </a>
+              </Link>
             </Tooltip>
 
             <Tooltip tooltipMessage="Ranking">
-              <a data-testid="ranking-link" href={AppRoute.Ranking}>
+              <Link
+                data-testid="ranking-link"
+                to={AppRoute.Ranking}
+                reloadDocument
+              >
                 <li
                   className={`${
                     pathname === AppRoute.Ranking && "active-nav"
@@ -44,12 +48,17 @@ export function ViewPage({ children }: ViewPageProps) {
                 >
                   <Medal weight="bold" />
                 </li>
-              </a>
+              </Link>
             </Tooltip>
 
             {isUserLogger ? (
               <Tooltip tooltipMessage="Logout">
-                <Link data-testid="logout-link" to="" onClick={signOut}>
+                <Link
+                  data-testid="logout-link"
+                  to=""
+                  onClick={() => signOut}
+                  reloadDocument
+                >
                   <li className="flex w-16 justify-center relative items-center text-3xl p-2 h-16">
                     <SignOut weight="bold" />
                   </li>
@@ -57,11 +66,15 @@ export function ViewPage({ children }: ViewPageProps) {
               </Tooltip>
             ) : (
               <Tooltip tooltipMessage="Login">
-                <a data-testid="login-link" href={AppRoute.Login}>
+                <Link
+                  data-testid="login-link"
+                  to={AppRoute.Login}
+                  reloadDocument
+                >
                   <li className="flex w-16 justify-center relative items-center text-3xl p-2 h-16">
                     <SignIn weight="bold" />
                   </li>
-                </a>
+                </Link>
               </Tooltip>
             )}
           </ul>
