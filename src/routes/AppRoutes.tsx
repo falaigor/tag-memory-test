@@ -9,9 +9,9 @@ export function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Home} element={<Home />} />
-        <Route path={AppRoute.Ranking} element={<Ranking />} />
-        <Route path={AppRoute.Login} element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/ranking" element={<Ranking />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
