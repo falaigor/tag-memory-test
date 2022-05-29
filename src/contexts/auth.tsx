@@ -39,6 +39,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }`;
 
   async function signInGithub(githubCode: string) {
+    api.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
     const response = await api.post<AuthResponse>("authenticate", {
       code: githubCode,
     });
