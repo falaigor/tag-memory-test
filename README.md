@@ -16,9 +16,9 @@
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- [Vite](https://vitejs.dev/)
+- [ViteJS](https://vitejs.dev/)
 - [ReactJS](https://reactjs.org)
-- [TypeScript](https://www.typescriptlang.org/)
+- [Typescript](https://www.typescriptlang.org/)
 
 # 💻 Projeto
 
@@ -30,6 +30,8 @@ A ideia do projeto era desenvolver um jogo onde o usuário pode tentar "descobri
 - [x] A cada acerrto adiciona 5s ao countdown
 - [x] Modal com resultado total
 - [x] Contador de tags adinvinhadas e do tempo total
+- [x] Login com Github
+- [x] Ranking Top 5
 
 ## Ambiente de desenvolvimento
 
@@ -56,7 +58,6 @@ A ideia do projeto era desenvolver um jogo onde o usuário pode tentar "descobri
 
 # 🚧 Features
 
-- [ ] Login com Github
 - [ ] Ranking dos usuários
 - [ ] Níveis de dificuldade
 - [ ] Cálculo de "Killing on Spree"
