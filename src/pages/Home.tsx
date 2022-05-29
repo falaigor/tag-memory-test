@@ -6,11 +6,15 @@ import { Input } from "../components/Home/Input";
 import { Button } from "../components/Home/Button";
 import { Modal } from "../components/Home/Modal";
 import { Countdown } from "../components/Home/Countdown";
-import { ViewPage } from "../components/ViewPage/ViewPage";
 
 export function Home() {
-  const { value, setValue, countRecallTag, startChallenge, finishChallenge } =
-    useChallenge();
+  const {
+    value,
+    setValue,
+    countRecallTag,
+    startChallenge,
+    finishChallenge,
+  } = useChallenge();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleKeyPress(event) {
@@ -28,7 +32,7 @@ export function Home() {
   }
 
   return (
-    <ViewPage>
+    <>
       <Modal isOpen={isModalOpen} closeModal={closeModal} />
 
       <div
@@ -63,6 +67,6 @@ export function Home() {
           <List />
         </div>
       </div>
-    </ViewPage>
+    </>
   );
 }
