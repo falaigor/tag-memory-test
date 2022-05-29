@@ -3,7 +3,6 @@ import { PageNotFound } from "../pages/404";
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
 import { Ranking } from "../pages/Ranking";
-import { AppRoute } from "./routes";
 
 export function AppRoutes() {
   return (
