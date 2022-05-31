@@ -20,17 +20,10 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
     if (finishChallenge) {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
 
-      api
-        .post("/ranking", {
-          guessedTags: totalGuessed,
-          time: totalTime,
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
+      api.post("/ranking", {
+        guessedTags: totalGuessed,
+        time: totalTime,
+      });
     }
   }, [finishChallenge]);
 
@@ -46,7 +39,7 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-30" />
+          <div className="fixed inset-0 bg-black bg-opacity-30 " />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto ">
@@ -67,11 +60,11 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                     className="text-4xl py-4 font-medium leading-6 text-gray-900 font-montserrat"
                   >
                     <Link
-                      className="w-full flex justify-end mb-4 outline-none"
+                      className="w-full flex justify-end mb-4 outline-none "
                       to=""
                       onClick={closeModal}
                     >
-                      <X size={20} />
+                      <X size={20} className="hover:text-zinc-900" />
                     </Link>
                     Congratulations
                   </Dialog.Title>

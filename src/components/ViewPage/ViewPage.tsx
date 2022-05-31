@@ -20,7 +20,7 @@ export function ViewPage({ children }: ViewPageProps) {
       data-testid="view-page"
       className="flex w-full overflow-x-hidden overflow-y-hidden"
     >
-      <aside className="w-screen sm:w-16 sm:h-screen bottom-0 sm:left-0 z-40 fixed flex items-center shadow-lg shadow-zinc-400 bg-zinc-100">
+      <aside className="w-screen sm:w-16 sm:h-screen bottom-0 sm:left-0 z-10 fixed flex items-center shadow-lg shadow-zinc-400 bg-zinc-100">
         <nav>
           <ul className="w-screen sm:w-16 flex sm:flex-col justify-center item-center">
             <Tooltip tooltipMessage="Home">
