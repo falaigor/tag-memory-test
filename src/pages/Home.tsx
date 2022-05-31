@@ -7,6 +7,7 @@ import { Button } from "../components/Home/Button";
 import { Modal } from "../components/Home/Modal";
 import { Countdown } from "../components/Home/Countdown";
 import { ViewPage } from "../components/ViewPage/ViewPage";
+import { SelectDifficulty } from "../components/Home/SelectDifficulty";
 
 export function Home() {
   const { value, setValue, countRecallTag, startChallenge, finishChallenge } =
@@ -43,6 +44,8 @@ export function Home() {
             <h2 className="text-xl">How many HTML tags can you remember?</h2>
             <h3 className="pb-2">{countRecallTag} to recall…</h3>
           </div>
+
+          <SelectDifficulty />
 
           <div className="flex p-4 my-4 rounded-2xl justify-between bg-zinc-100 border-2 border-zinc-900 drop-shadow-stroke items-center">
             <p className="text-3xl font-montserrat">Time Left</p>
