@@ -11,6 +11,8 @@ import { tags } from "../utils/tags";
 interface ChallengeContextData {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  difficultyType: string;
+  setDifficultyType: React.Dispatch<React.SetStateAction<string>>;
   time: number;
   countdown: number;
   totalTime: number;
@@ -28,8 +30,28 @@ interface ChallengeProviderProps {
   children: ReactNode;
 }
 
+export const difficultyTypes = {
+  EASY: {
+    time: 1 * 60,
+  },
+  HARD: {
+    time: 1 * 30,
+  },
+  EXPERT: {
+    time: 1 * 10,
+  },
+};
+
+export type DifficultyType = keyof typeof difficultyTypes;
+
 export function ChallengeProvider({ children }: ChallengeProviderProps) {
-  let timer = useRef(1 * 60);
+  const [difficultyType, setDifficultyType] = useState<DifficultyType | null>(
+    "EXPERT"
+  );
+
+  const difficultySelectType = difficultyTypes[difficultyType];
+
+  let timer = useRef(difficultySelectType.time);
 
   const time = timer.current;
 
@@ -94,6 +116,8 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
         time,
         value,
         setValue,
+        difficultyType,
+        setDifficultyType,
         totalTime,
         countdown,
         guessedTags,

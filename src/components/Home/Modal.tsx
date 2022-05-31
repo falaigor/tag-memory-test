@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import { useChallenge } from "../../contexts/challenge";
 import { api } from "../../services/api";
+import { AppRoute } from "../../routes/routes";
 
 interface ModalProps {
   isOpen: boolean;
@@ -15,25 +16,14 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
   const { totalTime, finishChallenge, totalGuessed } = useChallenge();
   const token = localStorage.getItem("@tagMemoryTest:token");
 
-  function restart() {
-    window.location.reload();
-  }
-
   useEffect(() => {
     if (finishChallenge) {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
 
-      api
-        .post("/ranking", {
-          guessedTags: totalGuessed,
-          time: totalTime,
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
+      api.post("/ranking", {
+        guessedTags: totalGuessed,
+        time: totalTime,
+      });
     }
   }, [finishChallenge]);
 
@@ -49,7 +39,7 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-30" />
+          <div className="fixed inset-0 bg-black bg-opacity-30 " />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto ">
@@ -70,11 +60,11 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                     className="text-4xl py-4 font-medium leading-6 text-gray-900 font-montserrat"
                   >
                     <Link
-                      className="w-full flex justify-end mb-4 outline-none"
+                      className="w-full flex justify-end mb-4 outline-none "
                       to=""
                       onClick={closeModal}
                     >
-                      <X size={20} />
+                      <X size={20} className="hover:text-zinc-900" />
                     </Link>
                     Congratulations
                   </Dialog.Title>
@@ -95,17 +85,19 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                   </div>
 
                   <div className="mt-4">
-                    <button
+                    <Link
                       type="button"
-                      className="w-full my-4 flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-800 text-zinc-100 hover:bg-blue-600 transition-all"
-                      onClick={restart}
+                      className="w-full my-4 flex p-4 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-600 text-zinc-100 hover:bg-blue-800 transition-all"
+                      to={AppRoute.Home}
+                      reloadDocument
                     >
                       Restart <CaretRight weight="bold" />
-                    </button>
+                    </Link>
 
                     <Link
-                      className="w-full my-4 flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900 hover:bg-yellow-600 transition-all"
-                      to="/ranking"
+                      to={AppRoute.Ranking}
+                      reloadDocument
+                      className="w-full my-4 flex p-4 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900 hover:bg-yellow-600 transition-all"
                     >
                       Ranking <CaretRight weight="bold" />
                     </Link>

@@ -5,6 +5,7 @@ import { Timer, Medal, SignIn, SignOut } from "phosphor-react";
 import { useAuth } from "../../contexts/auth";
 import { Footer } from "../Footer/Footer";
 import { Tooltip } from "../Tooltip";
+import { AppRoute } from "../../routes/routes";
 
 interface ViewPageProps {
   children: ReactNode;
@@ -19,14 +20,14 @@ export function ViewPage({ children }: ViewPageProps) {
       data-testid="view-page"
       className="flex w-full overflow-x-hidden overflow-y-hidden"
     >
-      <aside className="w-screen sm:w-16 sm:h-screen bottom-0 sm:left-0 z-40 fixed flex items-center shadow-lg shadow-zinc-400 bg-zinc-100">
+      <aside className="w-screen sm:w-16 sm:h-screen bottom-0 sm:left-0 z-10 fixed flex items-center shadow-lg shadow-zinc-400 bg-zinc-100">
         <nav>
           <ul className="w-screen sm:w-16 flex sm:flex-col justify-center item-center">
             <Tooltip tooltipMessage="Home">
-              <Link data-testid="home-link" to="/">
+              <Link data-testid="home-link" to={AppRoute.Home} reloadDocument>
                 <li
                   className={`${
-                    pathname === "/" && "active-nav"
+                    pathname === AppRoute.Home && "active-nav"
                   } flex w-16 justify-center relative items-center text-3xl p-2 h-16`}
                 >
                   <Timer weight="bold" />
@@ -35,10 +36,14 @@ export function ViewPage({ children }: ViewPageProps) {
             </Tooltip>
 
             <Tooltip tooltipMessage="Ranking">
-              <Link data-testid="ranking-link" to="/ranking">
+              <Link
+                data-testid="ranking-link"
+                to={AppRoute.Ranking}
+                reloadDocument
+              >
                 <li
                   className={`${
-                    pathname === "/ranking" && "active-nav"
+                    pathname === AppRoute.Ranking && "active-nav"
                   } flex w-16 justify-center relative items-center text-3xl p-2 h-16`}
                 >
                   <Medal weight="bold" />
@@ -48,7 +53,12 @@ export function ViewPage({ children }: ViewPageProps) {
 
             {isUserLogger ? (
               <Tooltip tooltipMessage="Logout">
-                <Link data-testid="logout-link" to="" onClick={signOut}>
+                <Link
+                  data-testid="logout-link"
+                  to=""
+                  onClick={() => signOut}
+                  reloadDocument
+                >
                   <li className="flex w-16 justify-center relative items-center text-3xl p-2 h-16">
                     <SignOut weight="bold" />
                   </li>
@@ -56,7 +66,11 @@ export function ViewPage({ children }: ViewPageProps) {
               </Tooltip>
             ) : (
               <Tooltip tooltipMessage="Login">
-                <Link data-testid="login-link" to="/login">
+                <Link
+                  data-testid="login-link"
+                  to={AppRoute.Login}
+                  reloadDocument
+                >
                   <li className="flex w-16 justify-center relative items-center text-3xl p-2 h-16">
                     <SignIn weight="bold" />
                   </li>
