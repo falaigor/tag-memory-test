@@ -87,7 +87,7 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                   <div className="mt-4">
                     <Link
                       type="button"
-                      className="w-full my-4 flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-800 text-zinc-100 hover:bg-blue-600 transition-all"
+                      className="w-full my-4 flex p-4 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-600 text-zinc-100 hover:bg-blue-800 transition-all"
                       to={AppRoute.Home}
                       reloadDocument
                     >
@@ -97,7 +97,7 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                     <Link
                       to={AppRoute.Ranking}
                       reloadDocument
-                      className="w-full my-4 flex p-4 border-2 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900 hover:bg-yellow-600 transition-all"
+                      className="w-full my-4 flex p-4 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900 hover:bg-yellow-600 transition-all"
                     >
                       Ranking <CaretRight weight="bold" />
                     </Link>
