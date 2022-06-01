@@ -2,19 +2,16 @@ import React, {
   createContext,
   useState,
   useEffect,
-  useRef,
   ReactNode,
   useContext,
 } from "react";
+import { useChallengeStore } from "../store/challenge";
 import { tags } from "../utils/tags";
 
 interface ChallengeContextData {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-  difficultyType: string;
-  setDifficultyType: React.Dispatch<React.SetStateAction<string>>;
   time: number;
-  countdown: number;
   totalTime: number;
   guessedTags: string[] | null;
   totalGuessed: number;
@@ -32,61 +29,69 @@ interface ChallengeProviderProps {
 
 export const difficultyTypes = {
   EASY: {
+    title: "Easy",
     time: 1 * 60,
+    increaseTime: 5,
+    description:
+      "No nivel easy, voce tem 1 minuto inicial e mais 5s por acerto",
   },
   HARD: {
+    title: "Hard",
     time: 1 * 30,
+    increaseTime: 3,
+    description:
+      "No nivel easy, voce tem 30 segundos iniciais e mais 3s por acerto",
   },
   EXPERT: {
+    title: "Expert",
     time: 1 * 10,
+    increaseTime: 5,
+    description:
+      "No nivel expert, voce tem 10 segundos iniciais e mais 1s por acerto",
   },
 };
 
 export type DifficultyType = keyof typeof difficultyTypes;
 
 export function ChallengeProvider({ children }: ChallengeProviderProps) {
-  const [difficultyType, setDifficultyType] = useState<DifficultyType | null>(
-    "EXPERT"
+  const { difficulty, totalTime } = useChallengeStore((store) => store.state);
+  const { increaseTime, increaseTotalTime, decreaseTime } = useChallengeStore(
+    (store) => store.actions
   );
 
-  const difficultySelectType = difficultyTypes[difficultyType];
-
-  let timer = useRef(difficultySelectType.time);
-
-  const time = timer.current;
-
-  const [countdown, setCountdown] = useState(timer.current);
-  const [totalTime, setTotalTime] = useState(0);
   const [value, setValue] = useState("");
   const [guessedTags, setGuessedTags] = useState([]);
   const [startCountdown, setStartCountdown] = useState(false);
   const [finishChallenge, setFinishChallenge] = useState(false);
 
-  const increaseCountdownTimer = () => (timer.current = timer.current + 5);
   const cleanInput = () => setValue("");
 
   const countRecallTag = tags.length - guessedTags.length;
   const totalGuessed = guessedTags.length;
 
-  function existsInTags(value) {
+  function existsInTags(value: string) {
     return tags.includes(value.toLowerCase());
   }
 
-  function existsInGuessedTags(value) {
+  function existsInGuessedTags(value: string) {
     return guessedTags.includes(value.toLowerCase());
   }
 
-  function addedGuesstedTags(value) {
-    if (existsInTags(value) && !existsInGuessedTags(value) && countdown > 0) {
+  function addedGuessedTags(value: string) {
+    if (
+      existsInTags(value) &&
+      !existsInGuessedTags(value) &&
+      difficulty.time > 0
+    ) {
       setGuessedTags([...guessedTags, value.toLowerCase()]);
-      increaseCountdownTimer();
+      increaseTime();
       cleanInput();
     }
   }
 
   function startChallenge() {
     setStartCountdown(true);
-    addedGuesstedTags(value);
+    addedGuessedTags(value);
   }
 
   function guessedAllTags() {
@@ -97,29 +102,30 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
   }
 
   useEffect(() => {
-    if (startCountdown === true && countdown > 0) {
+    if (startCountdown === true && difficulty.time > 0) {
       setTimeout(() => {
-        setCountdown((timer.current = timer.current - 1));
-        setTotalTime(totalTime + 1);
+        decreaseTime();
+        increaseTotalTime();
       }, 1000);
-    } else if (tags.length === guessedTags.length || countdown === 0) {
+    }
+  }, [difficulty, startCountdown]);
+
+  useEffect(() => {
+    if (tags.length === guessedTags.length || difficulty.time === 0) {
       setStartCountdown(false);
       setFinishChallenge(true);
     }
 
     guessedAllTags();
-  }, [countdown, startCountdown]);
+  }, [difficulty.time, startCountdown]);
 
   return (
     <ChallengeContext.Provider
       value={{
-        time,
+        time: difficulty.time,
         value,
         setValue,
-        difficultyType,
-        setDifficultyType,
         totalTime,
-        countdown,
         guessedTags,
         totalGuessed,
         countRecallTag,

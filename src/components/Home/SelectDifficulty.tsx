@@ -1,11 +1,10 @@
-import { useChallenge } from "../../contexts/challenge";
+import { Info } from "phosphor-react";
+import { DifficultyType, difficultyTypes } from "../../contexts/challenge";
+import { useChallengeStore } from "../../store/challenge";
 
 export function SelectDifficulty() {
-  const { difficultyType, setDifficultyType } = useChallenge();
-
-  function handleClick(key: string) {
-    setDifficultyType(key);
-  }
+  const { difficultyChange } = useChallengeStore((store) => store.actions);
+  const { difficulty } = useChallengeStore((store) => store.state);
 
   return (
     <div className="py-5">
@@ -16,32 +15,24 @@ export function SelectDifficulty() {
       </div>
 
       <div className="flex flex-row gap-2">
-        <button
-          data-testid="button"
-          type="button"
-          onClick={() => handleClick("EASY")}
-          className="w-full flex p-4 border-0 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-600 text-zinc-100 hover:bg-blue-800 transition-all"
-        >
-          Easy
-        </button>
-
-        <button
-          data-testid="button"
-          type="button"
-          onClick={() => handleClick("HARD")}
-          className="w-full flex p-4 border-0 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900 hover:bg-yellow-600 transition-all"
-        >
-          Hard
-        </button>
-
-        <button
-          data-testid="button"
-          type="button"
-          onClick={() => handleClick("EXPERT")}
-          className="w-full flex p-4 border-0 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-red-600 text-zinc-100 hover:bg-red-800 transition-all"
-        >
-          Expert
-        </button>
+        {Object.entries(difficultyTypes).map(([key, value]) => {
+          return (
+            <button
+              key={key}
+              data-testid="button"
+              type="button"
+              onClick={() => difficultyChange(key as DifficultyType)}
+              className={`${
+                difficulty.type === (key as DifficultyType)
+                  ? "bg-yellow-500 hover:bg-yellow-600 text-zinc-900"
+                  : "bg-blue-600 hover:bg-blue-700 text-zinc-100"
+              } w-full flex p-4 border-0 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center transition-all`}
+            >
+              <span className="mx-2">{value.title}</span>
+              <Info weight="bold" />
+            </button>
+          );
+        })}
       </div>
     </div>
   );
