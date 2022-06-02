@@ -4,7 +4,6 @@ import React, {
   useEffect,
   ReactNode,
   useContext,
-  useRef,
 } from "react";
 import { useChallengeStore } from "../store/challenge";
 import { tags } from "../utils/tags";
@@ -34,21 +33,21 @@ export const difficultyTypes = {
     time: 1 * 60,
     increaseTime: 5,
     description:
-      "No nivel easy, voce tem 1 minuto inicial e mais 5s por acerto",
+      "At this level you start with a 1 minute countdown. Every hit you get 5 seconds in the count.",
   },
   HARD: {
     title: "Hard",
     time: 1 * 30,
     increaseTime: 3,
     description:
-      "No nivel easy, voce tem 30 segundos iniciais e mais 3s por acerto",
+      "At this level you start with a 30 second countdown. Every hit you get 3 seconds in the count.",
   },
   EXPERT: {
     title: "Expert",
-    time: 1 * 10,
-    increaseTime: 5,
+    time: 1 * 15,
+    increaseTime: 2,
     description:
-      "No nivel expert, voce tem 10 segundos iniciais e mais 1s por acerto",
+      "At this level you start with a 15 second countdown. Every hit you get 2 seconds in the count.",
   },
 };
 
