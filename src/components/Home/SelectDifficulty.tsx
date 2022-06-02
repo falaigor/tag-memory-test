@@ -18,7 +18,7 @@ export function SelectDifficulty() {
         <div className="w-full border-t border-gray-900"></div>
       </div>
 
-      <div className="flex flex-row gap-2 mt-2">
+      <div className="flex flex-col sm:flex-row gap-2 mt-2">
         {Object.entries(difficultyTypes).map(([key, value]) => {
           return (
             <div className="w-full flex flex-col">
