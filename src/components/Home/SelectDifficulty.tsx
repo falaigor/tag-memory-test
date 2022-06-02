@@ -2,7 +2,6 @@ import { Info } from "phosphor-react";
 import { useState } from "react";
 import { DifficultyType, difficultyTypes } from "../../contexts/challenge";
 import { useChallengeStore } from "../../store/challenge";
-import { Information } from "../Information";
 import { Tooltip } from "../Tooltip";
 
 export function SelectDifficulty() {

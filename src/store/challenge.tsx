@@ -10,8 +10,29 @@ const initialState = {
   },
   totalTime: 0,
 };
+interface StateProps {
+  difficulty: {
+    type: string;
+    time: number;
+    increaseTime: number;
+  };
+  totalTime: number;
+}
 
-export const useChallengeStore = create((set) => {
+interface ActionProps {
+  difficultyChange: (difficulty: DifficultyType) => void;
+  increaseTime: () => void;
+  increaseTotalTime: () => void;
+  decreaseTime: () => void;
+  reset: () => void;
+}
+
+interface StoreProps {
+  state: StateProps;
+  actions: ActionProps;
+}
+
+export const useChallengeStore = create<StoreProps>((set) => {
   const setState = (fn: any) => set(produce(fn));
 
   return {
