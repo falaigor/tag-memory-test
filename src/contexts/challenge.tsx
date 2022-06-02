@@ -4,6 +4,7 @@ import React, {
   useEffect,
   ReactNode,
   useContext,
+  useRef,
 } from "react";
 import { useChallengeStore } from "../store/challenge";
 import { tags } from "../utils/tags";
@@ -60,13 +61,14 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
   );
 
   const [value, setValue] = useState("");
+  const [countdown, setCountdown] = useState(difficulty.time);
   const [guessedTags, setGuessedTags] = useState([]);
   const [startCountdown, setStartCountdown] = useState(false);
   const [finishChallenge, setFinishChallenge] = useState(false);
 
   const cleanInput = () => setValue("");
 
-  const countRecallTag = tags.length - guessedTags.length;
+  const countRecallTag = tags.length === guessedTags.length;
   const totalGuessed = guessedTags.length;
 
   function existsInTags(value: string) {
@@ -94,29 +96,25 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
     addedGuessedTags(value);
   }
 
-  function guessedAllTags() {
-    if (countRecallTag === 0) {
-      setStartCountdown(false);
-      setFinishChallenge(true);
-    }
-  }
+  useEffect(() => {
+    setCountdown(difficulty.time);
+  }, [difficulty.type]);
 
   useEffect(() => {
     if (startCountdown === true && difficulty.time > 0) {
       setTimeout(() => {
         decreaseTime();
         increaseTotalTime();
+        setCountdown(difficulty.time - 1);
       }, 1000);
     }
-  }, [difficulty, startCountdown]);
+  }, [countdown, startCountdown]);
 
   useEffect(() => {
-    if (tags.length === guessedTags.length || difficulty.time === 0) {
+    if (countRecallTag || difficulty.time === 0) {
       setStartCountdown(false);
       setFinishChallenge(true);
     }
-
-    guessedAllTags();
   }, [difficulty.time, startCountdown]);
 
   return (
@@ -128,7 +126,7 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
         totalTime,
         guessedTags,
         totalGuessed,
-        countRecallTag,
+        countRecallTag: tags.length - guessedTags.length,
         startCountdown,
         startChallenge,
         finishChallenge,
