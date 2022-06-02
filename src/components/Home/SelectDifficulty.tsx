@@ -3,6 +3,7 @@ import { useState } from "react";
 import { DifficultyType, difficultyTypes } from "../../contexts/challenge";
 import { useChallengeStore } from "../../store/challenge";
 import { Information } from "../Information";
+import { Tooltip } from "../Tooltip";
 
 export function SelectDifficulty() {
   const { difficultyChange } = useChallengeStore((store) => store.actions);
@@ -34,7 +35,9 @@ export function SelectDifficulty() {
               >
                 <span className="mx-2 font-montserrat">{value.title}</span>
                 <button type="button" onClick={() => setOpen(!open)}>
-                  <Info weight="bold" />
+                  <Tooltip tooltipMessage="Info">
+                    <Info weight="bold" />
+                  </Tooltip>
                 </button>
               </button>
 
