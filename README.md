@@ -10,7 +10,7 @@
 
 # HTML Tag Memory Test
 
-![https://tag-memory-test.vercel.app/](banner.png)
+![https://tag-memory-test.vercel.app/](banner.gif)
 
 # 🚀 Tecnologias
 
@@ -19,6 +19,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [ViteJS](https://vitejs.dev/)
 - [ReactJS](https://reactjs.org)
 - [Typescript](https://www.typescriptlang.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [Zustand](https://github.com/pmndrs/zustand)
+- [Immer](https://immerjs.github.io/immer/)
+- [Axios](https://axios-http.com/ptbr/)
 
 # 💻 Projeto
 
@@ -32,8 +36,9 @@ A ideia do projeto era desenvolver um jogo onde o usuário pode tentar "descobri
 - [x] Contador de tags adinvinhadas e do tempo total
 - [x] Login com Github
 - [x] Ranking Top 5
+- [x] Níveis de dificuldade
 
-## Ambiente de desenvolvimento
+# 🛠️ Ambiente de desenvolvimento
 
 - VSCode ([aqui](https://code.visualstudio.com)), com as seguintes extensões: [**ESLint**](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), [**Prettier - Code formatter**](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode), [Babel ES6/ES7](https://marketplace.visualstudio.com/items?itemName=dzannotti.vscode-babel-coloring), [Babel JavaScript](https://marketplace.visualstudio.com/items?itemName=mgmcdermott.vscode-language-babel) e [npm Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense)
 - NPM (instalado junto com node.js)
@@ -56,11 +61,11 @@ A ideia do projeto era desenvolver um jogo onde o usuário pode tentar "descobri
 - Na raiz do projeto, executar `npm install` para instalar as dependências
 - Quando concluído, `npm run build`
 
-# 🚧 Features
+# 🚧 Features Futuras
 
 - [ ] Ranking dos usuários
-- [ ] Níveis de dificuldade
 - [ ] Cálculo de "Killing on Spree"
+- [ ] Perfil do usuário
 
 ## 💪 Como contribuir para o projeto
 
@@ -75,9 +80,9 @@ A ideia do projeto era desenvolver um jogo onde o usuário pode tentar "descobri
 
 <div style="border-radius: 50%;">
  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/40046196?v=4" width="100px;" alt=""/>
- </div>
- <br />
- <sub><b>Igor Santos</b></sub>
+</div>
+<br />
+<sub><b>Igor Santos</b></sub>
 
 [![Twitter Badge](https://img.shields.io/badge/-@falaigors-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/falaigors)](https://twitter.com/falaigors) [![Linkedin Badge](https://img.shields.io/badge/-Igor-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/tgmarinho/)](https://www.linkedin.com/in/falaigor/)
 [![Gmail Badge](https://img.shields.io/badge/-falaigors@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:falaigors@gmail.com)](mailto:falaigors@gmail.com)
