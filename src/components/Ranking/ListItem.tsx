@@ -27,7 +27,7 @@ export function RankingListItem({ user, time, position, guessedTags }) {
           data-testid="guessed-tags"
           className="text-lg sm:text-xl text-center sm:text-right mx-0 sm:mx-4 font-montserrat"
         >
-          {guessedTags} guessed tags
+          {guessedTags} tags
         </p>
 
         <div
