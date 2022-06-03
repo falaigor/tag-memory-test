@@ -1,0 +1,31 @@
+// Vitest Snapshot v1
+
+exports[`Countdown > should show a minutes 1`] = `
+"
+    <div
+    data-testid=\\"minute\\"
+  >
+    <span>
+      0
+    </span>
+    <span>
+      1
+    </span>
+  </div>
+    "
+`;
+
+exports[`Countdown > should show a seconds 1`] = `
+"
+    <div
+    data-testid=\\"second\\"
+  >
+    <span>
+      0
+    </span>
+    <span>
+      5
+    </span>
+  </div>
+    "
+`;
