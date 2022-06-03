@@ -66,6 +66,7 @@ A ideia do projeto era desenvolver um jogo onde o usuário pode tentar "descobri
 - [ ] Ranking dos usuários
 - [ ] Cálculo de "Killing on Spree"
 - [ ] Perfil do usuário
+- [ ] Login antes de iniciar o teste
 
 ## 💪 Como contribuir para o projeto
 

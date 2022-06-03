@@ -1,4 +1,5 @@
 module.exports = {
+  preset: "vite-jest",
   testPathIgnorePatterns: ["<rootDir>/node_modules/"],
   coveragePathIgnorePatterns: [
     "<rootDir>/src/tags.ts",
