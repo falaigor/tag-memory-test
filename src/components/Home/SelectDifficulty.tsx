@@ -10,7 +10,7 @@ export function SelectDifficulty() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="py-5">
+    <div data-testid="select-difficulty" className="py-5">
       <h4 className="text-2xl font-montserrat">Select a difficulty</h4>
 
       <div className="py-5">
