@@ -1,5 +1,5 @@
 import { vi } from "vitest";
-import { useChallengeStore } from "../../store/challenge";
+import { useChallengeStore } from "../../../store/challenge";
 import { render, fireEvent, screen, renderHook } from "../../tests/test-utils";
 import { SelectDifficulty } from "./SelectDifficulty";
 

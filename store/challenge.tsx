@@ -1,6 +1,6 @@
 import create from "zustand";
 import produce from "immer";
-import { DifficultyType, difficultyTypes } from "../contexts/challenge";
+import { DifficultyType, difficultyTypes } from "../src/contexts/challenge";
 
 const initialState = {
   difficulty: {

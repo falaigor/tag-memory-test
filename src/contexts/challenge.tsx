@@ -5,7 +5,7 @@ import React, {
   ReactNode,
   useContext,
 } from "react";
-import { useChallengeStore } from "../store/challenge";
+import { useChallengeStore } from "../../store/challenge";
 import { tags } from "../utils/tags";
 
 interface ChallengeContextData {
