@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export function PageNotFound() {
   return (
     <div
-      data-testid="login-page"
+      data-testid="404-page"
       className="w-screen h-screen flex items-center justify-center mobile:p-4 "
     >
       <div className="max-w-xs w-full flex flex-col items-center">
