@@ -4,8 +4,7 @@ import { api } from "../../services/api";
 import { UserType } from "../../utils/types";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../routes/routes";
-import { Ranking } from "../../pages/Ranking";
-import { Loading } from "../Loading";
+import { Loading } from "./Loading";
 
 interface RankingProps {
   id: string;
@@ -20,22 +19,26 @@ export function RankingList() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    api
-      .get<RankingProps[]>("ranking")
-      .then((response) => {
-        setRankingList(response.data);
-      })
-      .catch((err) => {
-        setError(true);
-        throw new Error(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    async function fetchRanking() {
+      await api
+        .get<RankingProps[]>("ranking")
+        .then((response) => {
+          setRankingList(response.data);
+        })
+        .catch((err) => {
+          setError(true);
+          throw new Error(err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+
+    fetchRanking();
   }, []);
 
   if (loading) {
-    return <Loading message="Processing..." />;
+    return <Loading />;
   }
 
   return (
