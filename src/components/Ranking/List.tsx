@@ -5,6 +5,7 @@ import { UserType } from "../../utils/types";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../routes/routes";
 import { Loading } from "./Loading";
+import { Alerts } from "../Alerts";
 
 interface RankingProps {
   id: string;
@@ -44,12 +45,14 @@ export function RankingList() {
   return (
     <>
       {error ? (
-        <h1 className="mt-10 text-red-500">
-          There was an error loading the list,{" "}
-          <Link to={AppRoute.Ranking} reloadDocument className="underline">
-            please try again
-          </Link>
-        </h1>
+        <Alerts alertTitle="Error" type="error">
+          <p className="p-1">
+            There was an error loading the list,{" "}
+            <Link to={AppRoute.Ranking} reloadDocument className="underline">
+              please try again
+            </Link>
+          </p>
+        </Alerts>
       ) : (
         <div data-testid="ranking-list">
           <div className="flex p-4 mt-4 rounded-t-2xl justify-between bg-zinc-100 border-2 border-zinc-900 items-center">
