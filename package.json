@@ -7,7 +7,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.1",
