@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 interface AlertsProps {
   alertTitle: string;
-  type: "success" | "warning" | "error" | "string";
+  type: "success" | "warning" | "error";
   children: ReactNode;
 }
 

@@ -10,6 +10,7 @@ const initialState = {
   },
   totalTime: 0,
 };
+
 interface StateProps {
   difficulty: {
     type: string;
