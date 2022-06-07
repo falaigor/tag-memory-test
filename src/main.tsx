@@ -8,10 +8,10 @@ import "./styles/global.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AuthProvider>
-      <ChallengeProvider>
+    <ChallengeProvider>
+      <AuthProvider>
         <App />
-      </ChallengeProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </ChallengeProvider>
   </React.StrictMode>
 );
