@@ -1,11 +1,11 @@
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { Menu, Transition } from "@headlessui/react";
-import { CaretDown, PencilSimple, SignOut } from "phosphor-react";
+import { CaretDown, SignOut } from "phosphor-react";
 import { useAuth } from "../../contexts/auth";
 
 export function Header() {
-  const { signOut } = useAuth();
+  const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
   function logout() {
@@ -23,7 +23,7 @@ export function Header() {
         <img
           data-testid="avatar"
           className="w-[60px] mx-4 rounded-full border-2 md:border-4 border-zinc-900"
-          src="https://avatars.githubusercontent.com/u/40046196?v=4"
+          src={user.avatar_url}
         />
 
         <Menu as="div" className="relative inline-block text-left z-50">
