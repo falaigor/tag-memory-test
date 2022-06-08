@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Timer, Medal, SignIn, SignOut } from "phosphor-react";
+import { Timer, Medal, SignIn, SignOut, Gauge } from "phosphor-react";
 
 import { useAuth } from "../../contexts/auth";
 import { Footer } from "../Footer/Footer";
@@ -50,6 +50,24 @@ export function ViewPage({ children }: ViewPageProps) {
                 </li>
               </Link>
             </Tooltip>
+
+            {isUserLogger && (
+              <Tooltip tooltipMessage="Dashboard">
+                <Link
+                  data-testid="dashboard-link"
+                  to={AppRoute.Dashboard}
+                  reloadDocument
+                >
+                  <li
+                    className={`${
+                      pathname === AppRoute.Dashboard && "active-nav"
+                    } flex w-16 justify-center relative items-center text-3xl p-2 h-16`}
+                  >
+                    <Gauge weight="bold" />
+                  </li>
+                </Link>
+              </Tooltip>
+            )}
 
             {isUserLogger ? (
               <Tooltip tooltipMessage="Logout">
