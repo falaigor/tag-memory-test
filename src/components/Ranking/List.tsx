@@ -1,18 +1,11 @@
 import { useEffect, useState } from "react";
 import { RankingListItem } from "./ListItem";
 import { api } from "../../services/api";
-import { UserType } from "../../utils/types";
+import { RankingProps, UserType } from "../../utils/types";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../routes/routes";
 import { Loading } from "./Loading";
 import { Alerts } from "../Alerts";
-
-interface RankingProps {
-  id: string;
-  guessedTags: number;
-  time: number;
-  user: UserType;
-}
 
 export function RankingList() {
   const [rankingList, setRankingList] = useState<RankingProps[]>([]);

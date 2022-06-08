@@ -4,6 +4,7 @@ import { HomeDashboard } from "../pages/dashboard";
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
 import { Ranking } from "../pages/Ranking";
+import { ProtectedRoute } from "./ProtectRoute";
 
 export function AppRoutes() {
   return (
@@ -14,7 +15,14 @@ export function AppRoutes() {
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
 
-        <Route path="/dashboard" element={<HomeDashboard />}></Route>
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <HomeDashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

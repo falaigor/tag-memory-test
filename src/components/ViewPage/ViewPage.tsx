@@ -72,10 +72,10 @@ export function ViewPage({ children }: ViewPageProps) {
             {isUserLogger ? (
               <Tooltip tooltipMessage="Logout">
                 <Link
-                  data-testid="logout-link"
                   to=""
-                  onClick={() => signOut}
                   reloadDocument
+                  onClick={() => signOut()}
+                  data-testid="logout-link"
                 >
                   <li className="flex w-16 justify-center relative items-center text-3xl p-2 h-16">
                     <SignOut weight="bold" />

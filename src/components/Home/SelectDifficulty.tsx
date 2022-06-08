@@ -20,9 +20,8 @@ export function SelectDifficulty() {
       <div className="flex flex-col sm:flex-row gap-2 mt-2">
         {Object.entries(difficultyTypes).map(([key, value]) => {
           return (
-            <div className="w-full flex flex-col">
+            <div className="w-full flex flex-col" key={key}>
               <button
-                key={key}
                 data-testid="button"
                 type="button"
                 onClick={() => difficultyChange(key as DifficultyType)}

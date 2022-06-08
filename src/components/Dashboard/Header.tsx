@@ -1,8 +1,18 @@
 import { Fragment } from "react";
+import { useNavigate } from "react-router-dom";
 import { Menu, Transition } from "@headlessui/react";
 import { CaretDown, PencilSimple, SignOut } from "phosphor-react";
+import { useAuth } from "../../contexts/auth";
 
 export function Header() {
+  const { signOut } = useAuth();
+  const navigate = useNavigate();
+
+  function logout() {
+    signOut();
+    navigate("/", { replace: true });
+  }
+
   return (
     <div className="w-full flex justify-between">
       <h1 className="pt-4 pb-2 text-3xl sm:text-5xl font-extrabold font-montserrat text-zinc-900">
@@ -34,20 +44,11 @@ export function Header() {
             <Menu.Items className="absolute right-0 mt-6 w-56 origin-top-right divide-y divide-gray-100 rounded-md border-2 border-zinc-900 bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
               <div className="px-1 py-1 ">
                 <Menu.Item>
-                  <button className="hover:bg-yellow-500 text-zinc-900 group flex w-full items-center font-montserrat rounded-md px-2 py-2 text-sm">
-                    <PencilSimple
-                      className="mr-2 h-5 w-5"
-                      weight="bold"
-                      aria-hidden="true"
-                    />
-                    Edit
-                  </button>
-                </Menu.Item>
-              </div>
-
-              <div className="px-1 py-1 ">
-                <Menu.Item>
-                  <button className="hover:bg-red-500 text-zinc-900 group flex w-full items-center font-montserrat rounded-md px-2 py-2 text-sm">
+                  <button
+                    type="button"
+                    onClick={() => logout()}
+                    className="hover:bg-red-500 text-zinc-900 group flex w-full items-center font-montserrat rounded-md px-2 py-2 text-sm"
+                  >
                     <SignOut
                       className="mr-2 h-5 w-5"
                       weight="bold"
