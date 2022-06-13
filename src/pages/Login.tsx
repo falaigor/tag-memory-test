@@ -1,9 +1,9 @@
 import { useAuth } from "../contexts/auth";
 import { GithubLogo } from "phosphor-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../routes/routes";
 
 export function Login() {
-  const navigate = useNavigate();
   const { signInGithubUrl } = useAuth();
 
   return (
@@ -32,7 +32,11 @@ export function Login() {
           </a>
         </div>
 
-        <Link to="" onClick={() => history.back()} className="underline">
+        <Link
+          data-testid="button-back"
+          to={AppRoute.Home}
+          className="underline"
+        >
           Go to back
         </Link>
       </div>

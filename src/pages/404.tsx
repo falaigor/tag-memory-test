@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { AppRoute } from "../routes/routes";
 
 export function PageNotFound() {
   return (
@@ -12,7 +13,7 @@ export function PageNotFound() {
           <p className="text-center my-4">Page not found.</p>
         </div>
 
-        <Link to="" onClick={() => history.back()} className="underline">
+        <Link to={AppRoute.Home} className="underline">
           Go to back
         </Link>
       </div>

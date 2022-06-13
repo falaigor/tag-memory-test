@@ -22,7 +22,6 @@ export function SelectDifficulty() {
           return (
             <div className="w-full flex flex-col" key={key}>
               <button
-                data-testid="button"
                 type="button"
                 onClick={() => difficultyChange(key as DifficultyType)}
                 className={`${
@@ -32,15 +31,20 @@ export function SelectDifficulty() {
                 } w-full flex p-4 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center transition-all`}
               >
                 <span className="mx-2 font-montserrat">{value.title}</span>
-                <button type="button" onClick={() => setOpen(!open)}>
-                  <Tooltip tooltipMessage="Info">
-                    <Info weight="bold" />
-                  </Tooltip>
-                </button>
+                <Tooltip
+                  data-testid="tooltip"
+                  tooltipMessage="Info"
+                  onClick={() => setOpen(!open)}
+                >
+                  <Info weight="bold" />
+                </Tooltip>
               </button>
 
               {open && difficulty.type === (key as DifficultyType) && (
-                <p className="mt-2 p-2 transition-all text-center">
+                <p
+                  data-testid="description"
+                  className="mt-2 p-2 transition-all text-center"
+                >
                   {value.description}
                 </p>
               )}

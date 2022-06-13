@@ -2,15 +2,18 @@ import { ReactNode } from "react";
 
 export const Tooltip = ({
   tooltipMessage,
+  onClick,
   children,
 }: {
   tooltipMessage: string;
+  onClick?: () => void;
   children: ReactNode;
 }) => {
   return (
     <div
       data-testid="tooltip"
       className="relative flex flex-col items-center group"
+      onClick={onClick}
     >
       {children}
       <div className="absolute -top-5 flex flex-col items-center hidden mb-6 group-hover:flex">

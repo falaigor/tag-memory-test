@@ -1,10 +1,9 @@
-import { vi } from "vitest";
-import { render, fireEvent, screen } from "../../tests/test-utils";
+import { render, fireEvent, screen } from "@testing-library/react";
 import { Button } from "./Button";
 
 describe("Button", () => {
   const props = {
-    onClick: vi.fn(),
+    onClick: jest.fn(),
   };
 
   it("should render Buttton component", () => {

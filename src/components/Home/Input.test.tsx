@@ -1,13 +1,18 @@
-import { vi } from "vitest";
-import { render, screen, userEvent, fireEvent } from "../../tests/test-utils";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Input } from "./Input";
 
 describe("Input", () => {
   const props = {
     value: "",
-    onChange: vi.fn(),
-    onKeyPress: vi.fn(),
+    onChange: jest.fn(),
+    onKeyPress: jest.fn(),
   };
+
+  afterEach(() => {
+    cleanup();
+    jest.clearAllMocks();
+  });
 
   it("should render Input component", () => {
     render(<Input {...props} />);

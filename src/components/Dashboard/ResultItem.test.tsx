@@ -1,4 +1,4 @@
-import { screen, render } from "../../tests/test-utils";
+import { screen, render } from "@testing-library/react";
 import { ResultItem } from "./ResultItem";
 
 describe("ResultItem", () => {

@@ -54,7 +54,7 @@ export function HomeDashboard() {
   return (
     <ViewPage>
       <div
-        data-testid="dashboad-page"
+        data-testid="dashboard-page"
         className="max-w-3xl m-auto flex flex-col items-center justify-center mobile:p-4"
       >
         <Header />

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { RankingListItem } from "./ListItem";
 import { api } from "../../services/api";
-import { RankingProps, UserType } from "../../utils/types";
+import { RankingProps } from "../../utils/types";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../routes/routes";
 import { Loading } from "./Loading";
@@ -38,7 +38,7 @@ export function RankingList() {
   return (
     <>
       {error ? (
-        <Alerts alertTitle="Error" type="error">
+        <Alerts data-testid="alert-error" alertTitle="Error" type="error">
           <p className="p-1">
             There was an error loading the list,{" "}
             <Link to={AppRoute.Ranking} reloadDocument className="underline">

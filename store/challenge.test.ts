@@ -1,4 +1,4 @@
-import { renderHook, act } from "../src/tests/test-utils";
+import { renderHook, act } from "@testing-library/react";
 import { useChallengeStore } from "./challenge";
 
 describe("Challenge Store", () => {

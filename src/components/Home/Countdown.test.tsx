@@ -1,4 +1,4 @@
-import { render, screen } from "../../tests/test-utils";
+import { render, screen } from "@testing-library/react";
 import { Countdown } from "./Countdown";
 
 describe("Countdown", () => {
