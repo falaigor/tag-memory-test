@@ -61,9 +61,12 @@ export function ViewPage({ children }: ViewPageProps) {
                   <li
                     className={`${
                       pathname === AppRoute.Dashboard && "active-nav"
-                    } flex w-16 justify-center relative items-center text-3xl p-2 h-16`}
+                    } flex flex-col w-16 justify-center relative items-center text-3xl p-2 h-16`}
                   >
                     <Gauge weight="bold" />
+                    <span className="text-xs -mt-1 rounded-full bg-red-500 px-2 text-zinc-100 items-center flex justify-center tex-center">
+                      new
+                    </span>
                   </li>
                 </Link>
               </Tooltip>
