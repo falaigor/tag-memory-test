@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useChallenge } from "../contexts/challenge";
 
 import { List } from "../components/Home/List";
 import { Input } from "../components/Home/Input";
 import { Button } from "../components/Home/Button";
-import { Modal } from "../components/Home/Modal";
+import { Modal as OldaModal } from "../components/Home/Modal";
+import { Modal } from "../components/Modal";
 import { Countdown } from "../components/Home/Countdown";
 import { ViewPage } from "../components/ViewPage/ViewPage";
 import { SelectDifficulty } from "../components/Home/SelectDifficulty";
@@ -12,7 +13,9 @@ import { SelectDifficulty } from "../components/Home/SelectDifficulty";
 export function Home() {
   const { value, setValue, countRecallTag, startChallenge, finishChallenge } =
     useChallenge();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const modalRef = useRef(null);
+  const handleClickOpenModal = useCallback(() => modalRef.current.onOpen(), []);
 
   function handleKeyPress(event) {
     if (event.keyCode === 13) {
@@ -21,16 +24,12 @@ export function Home() {
   }
 
   useEffect(() => {
-    if (finishChallenge) setIsModalOpen(true);
+    if (finishChallenge) handleClickOpenModal();
   }, [finishChallenge]);
-
-  function closeModal() {
-    setIsModalOpen(false);
-  }
 
   return (
     <ViewPage>
-      <Modal isOpen={isModalOpen} closeModal={closeModal} />
+      <Modal ref={modalRef} />
 
       <div
         data-testid="home-page"
