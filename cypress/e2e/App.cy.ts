@@ -116,4 +116,23 @@ describe("App", () => {
       });
     });
   });
+
+  describe.only("App > Modal", () => {
+    it("should show modal with tag quantity and time", () => {
+      cy.visit("http://localhost:3000");
+
+      cy.get("button[data-testid='button-difficulty-expert']").click();
+      cy.get("body").contains("00:15");
+
+      cy.get("input[data-testid='input']").type("HTML");
+      cy.get("button[data-testid='button']").click();
+      cy.get("body").contains("html");
+
+      let timeLeft = 18000; //18 seconds;
+      cy.wait(timeLeft);
+
+      cy.get("body").contains("Congratulations");
+      cy.get("body").contains("You guessed 1 tag in 17 seconds!");
+    });
+  });
 });
