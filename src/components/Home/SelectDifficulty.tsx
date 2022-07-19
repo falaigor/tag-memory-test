@@ -23,6 +23,7 @@ export function SelectDifficulty() {
             <div className="w-full flex flex-col" key={key}>
               <button
                 type="button"
+                data-testid={`button-difficulty-${key.toLowerCase()}`}
                 onClick={() => difficultyChange(key as DifficultyType)}
                 className={`${
                   difficulty.type === (key as DifficultyType)
