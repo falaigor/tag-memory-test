@@ -117,7 +117,7 @@ describe("App", () => {
     });
   });
 
-  describe.only("App > Modal", () => {
+  describe("App > Modal", () => {
     it("should show modal with tag quantity and time", () => {
       cy.visit("http://localhost:3000");
 
