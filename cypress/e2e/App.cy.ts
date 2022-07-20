@@ -134,5 +134,53 @@ describe("App", () => {
       cy.get("body").contains("Congratulations");
       cy.get("body").contains("You guessed 1 tag in 17 seconds!");
     });
+
+    it("should close modal when click", () => {
+      cy.visit("http://localhost:3000");
+
+      cy.get("button[data-testid='button-difficulty-expert']").click();
+      cy.get("body").contains("00:15");
+
+      cy.get("input[data-testid='input']").type("HTML");
+      cy.get("button[data-testid='button']").click();
+
+      let timeLeft = 18000; //18 seconds;
+      cy.wait(timeLeft);
+
+      cy.get("[data-testid='button-close-modal']").click();
+    });
+
+    it("should restart page when click button 'restart", () => {
+      cy.visit("http://localhost:3000");
+
+      cy.get("button[data-testid='button-difficulty-expert']").click();
+      cy.get("body").contains("00:15");
+
+      cy.get("input[data-testid='input']").type("HTML");
+      cy.get("button[data-testid='button']").click();
+
+      let timeLeft = 18000; //18 seconds;
+      cy.wait(timeLeft);
+
+      cy.get("[data-testid='button-restart']").click();
+      cy.get("body").contains("HTML Tag memory test");
+      cy.get("body").contains("How many HTML tags can you remember?");
+    });
+
+    it("should restart page when click button 'restart", () => {
+      cy.visit("http://localhost:3000");
+
+      cy.get("button[data-testid='button-difficulty-expert']").click();
+      cy.get("body").contains("00:15");
+
+      cy.get("input[data-testid='input']").type("HTML");
+      cy.get("button[data-testid='button']").click();
+
+      let timeLeft = 18000; //18 seconds;
+      cy.wait(timeLeft);
+
+      cy.get("[data-testid='button-ranking']").click();
+      cy.url().should("eq", "http://localhost:3000/ranking");
+    });
   });
 });

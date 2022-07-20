@@ -32,7 +32,7 @@ export const Modal = forwardRef((props, ref) => {
   );
 
   useEffect(() => {
-    if (finishChallenge) {
+    if (finishChallenge && !!token) {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
 
       api.post("/ranking", {
@@ -75,9 +75,10 @@ export const Modal = forwardRef((props, ref) => {
                     className="text-4xl py-4 font-medium leading-6 text-gray-900 font-montserrat"
                   >
                     <Link
-                      className="w-full flex justify-end mb-4 outline-none "
                       to=""
                       onClick={onClose}
+                      data-testid="button-close-modal"
+                      className="w-full flex justify-end mb-4 outline-none "
                     >
                       <X size={20} className="hover:text-zinc-900" />
                     </Link>
@@ -102,6 +103,7 @@ export const Modal = forwardRef((props, ref) => {
                   <div className="mt-4">
                     <Link
                       type="button"
+                      data-testid="button-restart"
                       className="w-full my-4 flex p-4 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-600 text-zinc-100 hover:bg-blue-800 transition-all"
                       to={AppRoute.Home}
                       reloadDocument
@@ -111,6 +113,7 @@ export const Modal = forwardRef((props, ref) => {
 
                     <Link
                       to={AppRoute.Ranking}
+                      data-testid="button-ranking"
                       reloadDocument
                       className="w-full my-4 flex p-4 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900 hover:bg-yellow-600 transition-all"
                     >
