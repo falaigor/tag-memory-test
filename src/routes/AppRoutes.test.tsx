@@ -14,18 +14,6 @@ const renderWithRouter = (ui, { route = "/" } = {}) => {
 };
 
 describe("AppRoutes", () => {
-  it('should render Ranking Page when url equal "/ranking"', () => {
-    renderWithRouter(<AppRoutes />, { route: "/ranking" });
-
-    expect(screen.getByTestId("ranking-page")).toBeInTheDocument();
-  });
-
-  it('should render Login Page when url equal "/login"', () => {
-    renderWithRouter(<AppRoutes />, { route: "/login" });
-
-    expect(screen.getByTestId("login-page")).toBeInTheDocument();
-  });
-
   it("should render 404 Page when page not found", () => {
     renderWithRouter(<AppRoutes />, { route: "/asd" });
 
