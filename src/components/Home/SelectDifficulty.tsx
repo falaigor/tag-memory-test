@@ -1,17 +1,21 @@
-import { Info } from "phosphor-react";
 import { useState } from "react";
+import { Info } from "phosphor-react";
+import { useI18n } from "react-simple-i18n";
 import { DifficultyType, difficultyTypes } from "../../contexts/challenge";
 import { useChallengeStore } from "../../../store/challenge";
 import { Tooltip } from "../Tooltip";
 
 export function SelectDifficulty() {
+  const { t } = useI18n();
   const { difficultyChange } = useChallengeStore((store) => store.actions);
   const { difficulty } = useChallengeStore((store) => store.state);
   const [open, setOpen] = useState(false);
 
   return (
     <div data-testid="select-difficulty" className="py-5">
-      <h4 className="text-2xl font-montserrat">Select a difficulty</h4>
+      <h4 className="text-2xl font-montserrat">
+        {t("home.select-a-difficulty.title")}
+      </h4>
 
       <div className="py-5">
         <div className="w-full border-t border-gray-900"></div>
@@ -31,7 +35,13 @@ export function SelectDifficulty() {
                     : "bg-blue-600 hover:bg-blue-700 text-zinc-100 border-0"
                 } w-full flex p-4 border-zinc-900 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center transition-all`}
               >
-                <span className="mx-2 font-montserrat">{value.title}</span>
+                <span className="mx-2 font-montserrat">
+                  {t(
+                    `home.select-a-difficulty.difficulty.${
+                      key as DifficultyType
+                    }.title`
+                  )}
+                </span>
                 <Tooltip
                   data-testid="tooltip"
                   tooltipMessage="Info"
@@ -46,7 +56,11 @@ export function SelectDifficulty() {
                   data-testid="description"
                   className="mt-2 p-2 transition-all text-center"
                 >
-                  {value.description}
+                  {t(
+                    `home.select-a-difficulty.difficulty.${
+                      key as DifficultyType
+                    }.info`
+                  )}
                 </p>
               )}
             </div>

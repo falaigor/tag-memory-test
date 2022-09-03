@@ -1,0 +1,30 @@
+{
+    "home": {
+        "hero": {
+            "title": "HTML Tag memory test",
+            "subtitle": "Quantas tags você consegue se lembrar?"
+        },
+        "select-a-difficulty": {
+            "title": "Selecione uma dificuldade",
+            "difficulty": {
+                "EASY": {
+                    "title": "Fácil",
+                    "info": "Nesse nível, você começa com uma contagem regressiva de 1 minuto. A cada acerto você ganha 5 segundos na contagem."
+                },
+                "HARD": {
+                    "title": "Difícil",
+                    "info": "Nesse nível, você começa com uma contagem regressiva de 30 segundos. A cada acerto você ganha 3 segundos na contagem."
+                },
+                "EXPERT": {
+                    "title": "Especialista",
+                    "info": "Nesse nível, você começa com uma contagem regressiva de 15 segundos. A cada acerto você ganha 2 segundos na contagem."
+                }
+            }
+        },
+        "countdown": "Tempo Restante",
+        "form": {
+            "button": "Adivinhar",
+            "title-list": "Tags Adivinhadas"
+        }
+    }
+}

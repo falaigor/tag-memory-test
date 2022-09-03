@@ -1,0 +1,30 @@
+{
+    "home": {
+        "hero": {
+            "title": "HTML Tag memory test",
+            "subtitle": "How many HTML tags can you remember?"
+        },
+        "select-a-difficulty": {
+            "title": "Select a difficulty",
+            "difficulty": {
+                "EASY": {
+                    "title": "Easy",
+                    "info": "At this level you start with a 1 minute countdown. Every hit you get 5 seconds in the count."
+                },
+                "HARD": {
+                    "title": "Hard",
+                    "info": "At this level you start with a 30 second countdown. Every hit you get 3 seconds in the count."
+                },
+                "EXPERT": {
+                    "title": "Expert",
+                    "info": "At this level you start with a 15 second countdown. Every hit you get 2 seconds in the count."
+                }
+            }
+        },
+        "countdown": "Time Left",
+        "form": {
+            "button": "Guess",
+            "title-list": "Guessed Tags"
+        }
+    }
+}
