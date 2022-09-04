@@ -10,12 +10,14 @@ import { ViewPage } from "../components/ViewPage/ViewPage";
 import { SelectDifficulty } from "../components/Home/SelectDifficulty";
 
 import { useI18n } from "react-simple-i18n";
+import { useChallengeStore } from "../../store/challenge";
 
 export function Home() {
   const { t } = useI18n();
 
   const { value, setValue, countRecallTag, startChallenge, finishChallenge } =
     useChallenge();
+  const { difficulty } = useChallengeStore((store) => store.state);
 
   const modalRef = useRef(null);
   const handleClickOpenModal = useCallback(() => modalRef.current.onOpen(), []);
@@ -49,11 +51,13 @@ export function Home() {
 
           <SelectDifficulty />
 
-          <div className="flex p-4 my-4 rounded-2xl justify-between bg-zinc-100 border-2 border-zinc-900 drop-shadow-stroke items-center">
-            <p className="text-3xl font-montserrat">{t("home.countdown")}</p>
+          {difficulty.counter && (
+            <div className="flex p-4 my-4 rounded-2xl justify-between bg-zinc-100 border-2 border-zinc-900 drop-shadow-stroke items-center">
+              <p className="text-3xl font-montserrat">{t("home.countdown")}</p>
 
-            <Countdown />
-          </div>
+              <Countdown />
+            </div>
+          )}
 
           <div className="flex flex-row w-full gap-2">
             <Input

@@ -30,22 +30,25 @@ interface ChallengeProviderProps {
 export const difficultyTypes = {
   EASY: {
     title: "Easy",
-    time: 1 * 60,
-    increaseTime: 5,
+    counter: false,
+    time: 0,
+    increaseTime: 0,
     description:
       "At this level you start with a 1 minute countdown. Every hit you get 5 seconds in the count.",
   },
   HARD: {
     title: "Hard",
-    time: 1 * 30,
-    increaseTime: 3,
+    counter: true,
+    time: 1 * 60,
+    increaseTime: 5,
     description:
       "At this level you start with a 30 second countdown. Every hit you get 3 seconds in the count.",
   },
   EXPERT: {
     title: "Expert",
-    time: 1 * 15,
-    increaseTime: 2,
+    counter: true,
+    time: 1 * 30,
+    increaseTime: 3,
     description:
       "At this level you start with a 15 second countdown. Every hit you get 2 seconds in the count.",
   },
@@ -79,14 +82,12 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
   }
 
   function addedGuessedTags(value: string) {
-    if (
-      existsInTags(value) &&
-      !existsInGuessedTags(value) &&
-      difficulty.time > 0
-    ) {
-      setGuessedTags([...guessedTags, value.toLowerCase()]);
-      increaseTime();
-      cleanInput();
+    if (existsInTags(value) && !existsInGuessedTags(value)) {
+      if (difficulty.time > 0 || difficulty.counter === false) {
+        setGuessedTags([...guessedTags, value.toLowerCase()]);
+        increaseTime();
+        cleanInput();
+      }
     }
   }
 
@@ -100,21 +101,29 @@ export function ChallengeProvider({ children }: ChallengeProviderProps) {
   }, [difficulty.type]);
 
   useEffect(() => {
-    if (startCountdown === true && difficulty.time > 0) {
+    if (
+      (startCountdown === true && difficulty.time > 0) ||
+      (startCountdown === true && difficulty.counter === false)
+    ) {
       setTimeout(() => {
         decreaseTime();
         increaseTotalTime();
         setCountdown(difficulty.time - 1);
       }, 1000);
     }
-  }, [countdown, startCountdown]);
+
+    console.log(totalTime);
+  }, [countdown, startCountdown, totalTime]);
 
   useEffect(() => {
-    if (countRecallTag || difficulty.time === 0) {
+    if (
+      countRecallTag ||
+      (difficulty.time === 0 && difficulty.counter === true)
+    ) {
       setStartCountdown(false);
       setFinishChallenge(true);
     }
-  }, [difficulty.time, startCountdown]);
+  }, [guessedTags, difficulty.time, startCountdown]);
 
   return (
     <ChallengeContext.Provider

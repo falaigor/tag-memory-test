@@ -5,8 +5,9 @@ import { DifficultyType, difficultyTypes } from "../src/contexts/challenge";
 const initialState = {
   difficulty: {
     type: "EASY",
-    time: 1 * 60,
-    increaseTime: 5,
+    counter: false,
+    time: 0,
+    increaseTime: 0,
   },
   totalTime: 0,
 };
@@ -14,6 +15,7 @@ const initialState = {
 interface StateProps {
   difficulty: {
     type: string;
+    counter: boolean;
     time: number;
     increaseTime: number;
   };
@@ -46,6 +48,7 @@ export const useChallengeStore = create<StoreProps>((set) => {
           const difficultySelectType = difficultyTypes[difficulty];
 
           state.difficulty.type = difficulty;
+          state.difficulty.counter = difficultySelectType.counter;
           state.difficulty.time = difficultySelectType.time;
           state.difficulty.increaseTime = difficultySelectType.increaseTime;
         });
