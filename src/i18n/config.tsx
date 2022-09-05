@@ -16,8 +16,10 @@ export function I18nProvider({ children }: I18nProps) {
     "en-US": enUS,
   };
 
+  const defaultLang = userLang || "en-US";
+
   return (
-    <Provider i18n={createI18n(resources, { lang: userLang })}>
+    <Provider i18n={createI18n(resources, { lang: defaultLang })}>
       {children}
     </Provider>
   );
