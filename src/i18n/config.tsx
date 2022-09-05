@@ -8,13 +8,16 @@ interface I18nProps {
 }
 
 export function I18nProvider({ children }: I18nProps) {
+  const userLang =
+    localStorage.getItem("@tagMemoryTest:lang") || navigator.language;
+
   const resources = {
-    "pt-br": ptBR,
-    "en-us": enUS,
+    "pt-BR": ptBR,
+    "en-US": enUS,
   };
 
   return (
-    <Provider i18n={createI18n(resources, { lang: "pt-br" })}>
+    <Provider i18n={createI18n(resources, { lang: userLang })}>
       {children}
     </Provider>
   );
