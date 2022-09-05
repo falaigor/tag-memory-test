@@ -12,8 +12,10 @@ import { Link } from "react-router-dom";
 import { AppRoute } from "../../routes/routes";
 import { api } from "../../services/api";
 import { useChallenge } from "../../contexts/challenge";
+import { useI18n } from "react-simple-i18n";
 
 export const Modal = forwardRef((props, ref) => {
+  const { t } = useI18n();
   const [isOpen, setIsOpen] = useState(false);
   const token = localStorage.getItem("@tagMemoryTest:token");
   const { totalTime, finishChallenge, totalGuessed } = useChallenge();
@@ -71,53 +73,43 @@ export const Modal = forwardRef((props, ref) => {
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden border-2 border-zinc-900 drop-shadow-stroke rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
-                    as="h3"
+                    as="h2"
                     className="text-4xl py-4 font-medium leading-6 text-gray-900 font-montserrat"
                   >
-                    <Link
-                      to=""
-                      onClick={onClose}
+                    <button
+                      type="button"
+                      onClick={() => onClose}
                       data-testid="button-close-modal"
                       className="w-full flex justify-end mb-4 outline-none "
                     >
                       <X size={20} className="hover:text-zinc-900" />
-                    </Link>
-                    Congratulations
+                    </button>
+                    {t("modal.title")}
                   </Dialog.Title>
                   <div data-testid="result" className="mt-4 mb-6">
                     <p className=" text-gray-500">
-                      You guessed
+                      {t("modal.result")}
                       <span className="text-blue-800 font-bold">
                         {totalGuessed > 1
                           ? ` ${totalGuessed} tags `
                           : ` ${totalGuessed} tag `}
                       </span>
-                      in{" "}
+                      {t("modal.result_in")}
                       <span className="text-blue-800 font-bold">
-                        {totalTime} seconds
+                        {t("modal.result_seconds", totalTime.toString())}
                       </span>
-                      !
                     </p>
                   </div>
 
                   <div className="mt-4">
                     <Link
-                      type="button"
                       data-testid="button-restart"
                       className="w-full my-4 flex p-4 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-blue-600 text-zinc-100 hover:bg-blue-800 transition-all"
                       to={AppRoute.Home}
                       reloadDocument
                     >
-                      Restart <CaretRight weight="bold" />
-                    </Link>
-
-                    <Link
-                      to={AppRoute.Ranking}
-                      data-testid="button-ranking"
-                      reloadDocument
-                      className="w-full my-4 flex p-4 drop-shadow-stroke rounded-2xl text-lg font-bold justify-center items-center bg-yellow-500 text-zinc-900 hover:bg-yellow-600 transition-all"
-                    >
-                      Ranking <CaretRight weight="bold" />
+                      {t("modal.button")}
+                      <CaretRight weight="bold" />
                     </Link>
                   </div>
                 </Dialog.Panel>

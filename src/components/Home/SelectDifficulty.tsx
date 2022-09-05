@@ -13,16 +13,16 @@ export function SelectDifficulty() {
 
   return (
     <div data-testid="select-difficulty" className="py-5">
-      <h4 className="text-2xl font-montserrat">
+      <h2 className="text-2xl font-montserrat">
         {t("home.select-a-difficulty.title")}
-      </h4>
+      </h2>
 
       <div className="py-5">
         <div className="w-full border-t border-gray-900"></div>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-2 mt-2">
-        {Object.entries(difficultyTypes).map(([key, value]) => {
+        {Object.entries(difficultyTypes).map(([key]) => {
           return (
             <div className="w-full flex flex-col" key={key}>
               <button
@@ -46,6 +46,7 @@ export function SelectDifficulty() {
                   data-testid="tooltip"
                   tooltipMessage="Info"
                   onClick={() => setOpen(!open)}
+                  aria-hidden={!open}
                 >
                   <Info weight="bold" />
                 </Tooltip>

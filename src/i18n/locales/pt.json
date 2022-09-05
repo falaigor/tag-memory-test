@@ -2,7 +2,8 @@
     "home": {
         "hero": {
             "title": "Teste de Memória de Tags HTML",
-            "subtitle": "Quantas tags você consegue se lembrar?"
+            "subtitle": "Quantas tags você consegue se lembrar?",
+            "remember": "%s% para lembrar..."
         },
         "select-a-difficulty": {
             "title": "Selecione uma dificuldade",
@@ -26,5 +27,12 @@
             "button": "Adivinhar",
             "title-list": "Tags Adivinhadas"
         }
+    },
+    "modal": {
+        "title": "Parabéns",
+        "result": "Você adivinhou ",
+        "result_in": "em ",
+        "result_seconds": "%s% segundos!",
+        "button": "Reiniciar"
     }
 }

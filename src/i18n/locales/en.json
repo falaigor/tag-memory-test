@@ -2,7 +2,8 @@
     "home": {
         "hero": {
             "title": "HTML Tag memory test",
-            "subtitle": "How many HTML tags can you remember?"
+            "subtitle": "How many HTML tags can you remember?",
+            "remember": "%s% to recall..."
         },
         "select-a-difficulty": {
             "title": "Select a difficulty",
@@ -26,5 +27,12 @@
             "button": "Guess",
             "title-list": "Guessed Tags"
         }
+    },
+    "modal": {
+        "title": "Congratulations",
+        "result": "You guessed ",
+        "result_in": "in ",
+        "result_seconds": "seconds!",
+        "button": "Restart"
     }
 }

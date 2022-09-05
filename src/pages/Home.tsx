@@ -45,8 +45,10 @@ export function Home() {
             <h1 className="pt-4 pb-2 text-5xl font-extrabold font-montserrat text-zinc-900">
               {t("home.hero.title")}
             </h1>
-            <h2 className="text-xl">{t("home.hero.subtitle")}</h2>
-            <h3 className="pb-2">{countRecallTag} to recall…</h3>
+            <p className="text-xl">{t("home.hero.subtitle")}</p>
+            <p className="pb-2">
+              {t("home.hero.remember", countRecallTag.toString())}
+            </p>
           </div>
 
           <SelectDifficulty />

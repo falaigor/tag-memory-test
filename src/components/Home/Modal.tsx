@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useChallenge } from "../../contexts/challenge";
 import { api } from "../../services/api";
 import { AppRoute } from "../../routes/routes";
+import { useI18n } from "react-simple-i18n";
 
 interface ModalProps {
   isOpen: boolean;
@@ -13,6 +14,7 @@ interface ModalProps {
 }
 
 export function Modal({ isOpen, closeModal }: ModalProps) {
+  const { t } = useI18n();
   const { totalTime, finishChallenge, totalGuessed } = useChallenge();
   const token = localStorage.getItem("@tagMemoryTest:token");
 
@@ -66,11 +68,11 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                     >
                       <X size={20} className="hover:text-zinc-900" />
                     </Link>
-                    Congratulations
+                    {t("modal.title")}
                   </Dialog.Title>
                   <div data-testid="result" className="mt-4 mb-6">
                     <p className=" text-gray-500">
-                      You guessed
+                      {t("modal.result")}
                       <span className="text-blue-800 font-bold">
                         {totalGuessed > 1
                           ? ` ${totalGuessed} tags `
@@ -78,7 +80,7 @@ export function Modal({ isOpen, closeModal }: ModalProps) {
                       </span>
                       in{" "}
                       <span className="text-blue-800 font-bold">
-                        {totalTime} seconds
+                        {totalTime} {t("modal.result")}
                       </span>
                       !
                     </p>
