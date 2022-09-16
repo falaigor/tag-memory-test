@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { useI18n } from "react-simple-i18n";
 import { Footer } from "../Footer/Footer";
 
 interface ViewPageProps {
@@ -6,7 +7,9 @@ interface ViewPageProps {
 }
 
 export function ViewPage({ children }: ViewPageProps) {
-  const userLang = localStorage.getItem("@tagMemoryTest:lang");
+  const { i18n } = useI18n();
+  const userLang =
+    localStorage.getItem("@tagMemoryTest:lang") || i18n.getLang();
 
   function selectLang(lang: string) {
     localStorage.setItem("@tagMemoryTest:lang", lang);
